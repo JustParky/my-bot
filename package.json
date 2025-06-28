@@ -1,0 +1,21 @@
+{
+  "name": "my-bot",
+  "version": "1.0.0",
+  "description": "Basic Discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^3.6.1",
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.18.0",
+    "@distube/ytdl-core": "^4.16.12",
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.5.0",
+    "node-fetch": "^3.3.2",
+    "play-dl": "^1.9.7",
+    "rss-parser": "^3.13.0",
+    "xbox-webapi": "^1.4.2"
+  }
+}
