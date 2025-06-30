@@ -1,94 +1,218 @@
-// deploy-commands.js
 const { REST, Routes, SlashCommandBuilder } = require('discord.js');
 require('dotenv').config();
 
-// Ensure your .env contains:
-// DISCORD_TOKEN=your_bot_token
-// CLIENT_ID=your_app_client_id
-// GUILD_ID=your_test_guild_id
-
 const commands = [
   new SlashCommandBuilder()
+    .setName('chat')
+    .setDescription('Chat with Nexus AI')
+    .addStringOption(option =>
+      option.setName('message')
+        .setDescription('Your message')
+        .setRequired(true)),
+  new SlashCommandBuilder()
     .setName('hello')
-    .setDescription('👋 Hello Vault Dweller! Allow me to introduce myself.'),
-
+    .setDescription('Say hi to Nexus'),
   new SlashCommandBuilder()
     .setName('roll')
-    .setDescription('🎲 Roll a dice (1–6)'),
-
+    .setDescription('Roll a 6-sided die'),
   new SlashCommandBuilder()
     .setName('userinfo')
-    .setDescription('👤 Show your user info'),
-
+    .setDescription('Get user info'),
+  new SlashCommandBuilder()
+    .setName('radio')
+    .setDescription('Play a radio station')
+    .addStringOption(option =>
+      option.setName('station')
+        .setDescription('Station name, URL, or file')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('silo-codes')
+    .setDescription('Get Fallout 76 silo codes'),
   new SlashCommandBuilder()
     .setName('join')
-    .setDescription('🔊 Invites me to your voice channel'),
-
+    .setDescription('Join voice channel'),
   new SlashCommandBuilder()
     .setName('leave')
-    .setDescription('👋 Makes me leave the voice channel'),
-
-new SlashCommandBuilder()
-    .setName('silo-codes')
-    .setDescription('☢️ Fetch the current Fallout 76 silo launch codes.'),
-
+    .setDescription('Leave voice channel'),
   new SlashCommandBuilder()
     .setName('pause')
-    .setDescription('⏸ Pause the music'),
-
+    .setDescription('Pause music'),
   new SlashCommandBuilder()
     .setName('resume')
-    .setDescription('▶️ Resume the music'),
-
+    .setDescription('Resume music'),
+  new SlashCommandBuilder()
+    .setName('meme')
+    .setDescription('Get a meme')
+    .addStringOption(option =>
+      option.setName('topic')
+        .setDescription('Subreddit (optional)')
+        .setRequired(false)),
+  new SlashCommandBuilder()
+    .setName('quote')
+    .setDescription('Get a quote')
+    .addStringOption(option =>
+      option.setName('who')
+        .setDescription('Author (e.g., yoda)')
+        .setRequired(false)),
   new SlashCommandBuilder()
     .setName('skip')
-    .setDescription('⏭ Skip the current song'),
-
+    .setDescription('Skip current song'),
   new SlashCommandBuilder()
     .setName('stop')
-    .setDescription('🛑 Stop music and makes me leave the voice channel'),
-
+    .setDescription('Stop music and leave'),
   new SlashCommandBuilder()
     .setName('queue')
-    .setDescription('📜 Show the current song queue'),
-
+    .setDescription('View music queue'),
   new SlashCommandBuilder()
     .setName('play')
-    .setDescription('🎵 Play a song from YouTube or Spotify')
+    .setDescription('Play a song or playlist')
     .addStringOption(option =>
-      option
-        .setName('query')
-        .setDescription('YouTube/Spotify link or search term')
-        .setRequired(true)
-    ),
-
+      option.setName('query')
+        .setDescription('Song name, YouTube URL, Spotify URL, or SoundCloud URL')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('seek')
+    .setDescription('Seek to a timestamp')
+    .addStringOption(option =>
+      option.setName('time')
+        .setDescription('Time in seconds or mm:ss')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('Check bot latency'),
+  new SlashCommandBuilder()
+    .setName('poll')
+    .setDescription('Create a poll')
+    .addStringOption(option =>
+      option.setName('question')
+        .setDescription('Poll question')
+        .setRequired(true))
+    .addIntegerOption(option =>
+      option.setName('duration')
+        .setDescription('Duration in minutes (default 5)')
+        .setRequired(false)),
+  new SlashCommandBuilder()
+    .setName('coinflip')
+    .setDescription('Flip a coin'),
+  new SlashCommandBuilder()
+    .setName('randomnumber')
+    .setDescription('Get a random number')
+    .addIntegerOption(option =>
+      option.setName('min')
+        .setDescription('Minimum (default 1)')
+        .setRequired(false))
+    .addIntegerOption(option =>
+      option.setName('max')
+        .setDescription('Maximum (default 100)')
+        .setRequired(false)),
+  new SlashCommandBuilder()
+    .setName('clear')
+    .setDescription('Clear messages')
+    .addIntegerOption(option =>
+      option.setName('amount')
+        .setDescription('Number of messages (1-100)')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-status')
+    .setDescription('Check Xbox Live status'),
   new SlashCommandBuilder()
     .setName('xbox-profile')
-    .setDescription('🎮 Show an Xbox Live profile')
+    .setDescription('Get Xbox profile')
     .addStringOption(option =>
-      option
-        .setName('gamertag')
-        .setDescription('Gamertag to look up')
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-gamercard')
+    .setDescription('Get Xbox gamercard')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-achievements')
+    .setDescription('Get Xbox achievements')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-friends')
+    .setDescription('Get Xbox friends')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-clip')
+    .setDescription('Get Xbox clip')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-screenshot')
+    .setDescription('Get Xbox screenshot')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-gametime')
+    .setDescription('Get Xbox play time')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-leaderboard')
+    .setDescription('Get Fallout 76 leaderboard'),
+  new SlashCommandBuilder()
+    .setName('xbox-activity')
+    .setDescription('Get Xbox activity')
+    .addStringOption(option =>
+      option.setName('gamertag')
+        .setDescription('Xbox gamertag')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('xbox-gameinfo')
+    .setDescription('Get game info')
+    .addStringOption(option =>
+      option.setName('game')
+        .setDescription('Game name')
         .setRequired(true)
-    ),
-].map(cmd => cmd.toJSON());
+        .addChoices(
+          { name: 'Fallout 76', value: 'fallout76' },
+          { name: 'GTA V', value: 'gtav' },
+          { name: 'WoW', value: 'wow' },
+          { name: 'Deadside', value: 'deadside' },
+        )),
+  new SlashCommandBuilder()
+    .setName('help')
+    .setDescription('List all available commands'),
+  new SlashCommandBuilder()
+    .setName('lyrics')
+    .setDescription('Fetch lyrics for a song')
+    .addStringOption(option =>
+      option.setName('song')
+        .setDescription('Song name or current song')
+        .setRequired(false)),
+  new SlashCommandBuilder()
+    .setName('history')
+    .setDescription('View recently played songs'),
+].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
   try {
-    console.log(`🔁 Registering ${commands.length} commands to guild ${process.env.GUILD_ID}…`);
-
+    console.log('Started refreshing application (/) commands.');
     await rest.put(
-      Routes.applicationGuildCommands(
-        process.env.CLIENT_ID,
-        process.env.GUILD_ID
-      ),
+      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
       { body: commands },
     );
-
-    console.log(`✅ Successfully registered commands to guild ${process.env.GUILD_ID}`);
+    console.log('Successfully reloaded application (/) commands.');
   } catch (error) {
-    console.error('❌ Error registering commands:', error);
+    console.error('Error deploying commands:', error);
   }
 })();

@@ -1,3 +1,5 @@
 {
-  "ignore": ["codes.json"]
+  "watch": ["index.js", "commands/*.js", "utils.js"],
+  "ext": "js",
+  "ignore": ["codes.json", "node_modules", "audio", "*.log"]
 }
