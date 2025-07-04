@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { ServerQueue } = require('../utils');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { ServerQueue, extractYouTubeID } = require('../utils');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -10,7 +10,7 @@ module.exports = {
         .setDescription('YouTube URL or search query')
         .setRequired(true)),
   permissions: [],
-  async execute(interaction, { getOrJoinVoiceChannel, getStream, queues, playNext, validateYouTubeURL, firstResultOrFail }) {
+  async execute(interaction, { getOrJoinVoiceChannel, getStream, queues, playNext, validateYouTubeURL, firstResultOrFail, client, player, history }) {
     console.log('Executing /play command');
     await interaction.deferReply();
     const query = interaction.options.getString('query');
@@ -19,52 +19,88 @@ module.exports = {
     const channel = interaction.channel;
 
     try {
-      // Validate and join voice channel
-      console.log(`Joining voice channel for guild: ${guildId}`);
       const connection = await getOrJoinVoiceChannel(member, guildId, interaction.guild.voiceAdapterCreator);
+      if (!connection) throw new Error('Failed to join voice channel');
 
-      // Create or get server queue
       if (!queues.has(guildId)) {
         console.log(`Creating new ServerQueue for guild: ${guildId}`);
         queues.set(guildId, new ServerQueue(connection, channel));
       }
       const serverQueue = queues.get(guildId);
 
-      // Validate or search for YouTube URL
       let url = validateYouTubeURL(query) ? query : null;
       if (!url) {
         console.log(`Searching for: ${query}`);
         const search = require('play-dl');
-        const results = await search.search(query, { limit: 1, source: { youtube: 'video' } });
-        if (!results || results.length === 0) throw new Error('No search results found');
-        url = results[0].url;
+        try {
+          const results = await search.search(query, { limit: 1, source: { youtube: 'video' } });
+          if (!results || results.length === 0) throw new Error('No search results found');
+          url = results[0].url;
+        } catch (searchError) {
+          throw new Error(`Search failed: ${searchError.message}`);
+        }
       }
 
-      // Get song info
       console.log(`Fetching info for URL: ${url}`);
       const ytdl = require('@distube/ytdl-core');
-      const info = await ytdl.getInfo(url);
+      let info;
+      try {
+        info = await ytdl.getInfo(url);
+      } catch (ytdlError) {
+        throw new Error(`Failed to fetch video info: ${ytdlError.message}`);
+      }
+
+      const artist = info.videoDetails.author?.name || 'Unknown Artist';
+      const durationSeconds = parseInt(info.videoDetails.lengthSeconds, 10);
+      const duration = durationSeconds
+        ? `${Math.floor(durationSeconds / 60)}:${(durationSeconds % 60).toString().padStart(2, '0')}`
+        : 'Unknown';
+
+      let stream;
+      try {
+        console.log(`Getting stream for URL: ${url}`);
+        stream = await getStream(url);
+        if (!stream) throw new Error('Failed to obtain stream');
+      } catch (streamError) {
+        throw new Error(`Stream retrieval failed: ${streamError.message}`);
+      }
+
       const song = {
         title: info.videoDetails.title,
+        artist: artist,
         url: url,
-        stream: await getStream(url),
+        stream: stream,
         requestedBy: member.user.tag,
-        duration: parseInt(info.videoDetails.lengthSeconds, 10),
+        duration: durationSeconds,
         source: 'youtube',
       };
 
-      // Add song to queue
       console.log(`Adding song to queue: ${song.title}`);
       serverQueue.songs.push(song);
 
-      // Play if not already playing
+      const embed = new EmbedBuilder()
+        .setTitle('🎵 Added to Queue')
+        .setDescription(`**${song.title}**`)
+        .addFields(
+          { name: 'Artist', value: song.artist, inline: true },
+          { name: 'Duration', value: duration, inline: true },
+          { name: 'Requested by', value: song.requestedBy, inline: true }
+        )
+        .setThumbnail(`https://img.youtube.com/vi/${extractYouTubeID(song.url)}/default.jpg`)
+        .setColor(0x1db954)
+        .setTimestamp();
+
       if (!serverQueue.playing) {
         console.log('Starting playback');
         serverQueue.playing = true;
-        await playNext(guildId, channel);
+        try {
+          await playNext(guildId, channel, client, player, queues, history);
+        } catch (playError) {
+          throw new Error(`Playback initiation failed: ${playError.message}`);
+        }
       }
 
-      await interaction.editReply(`🎵 Added to queue: **${song.title}**`);
+      await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       console.error('Error in /play command:', error.message);
       await interaction.editReply(`❌ Error: ${error.message}`);

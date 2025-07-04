@@ -3,18 +3,25 @@ require('dotenv').config();
 
 const commands = [
   new SlashCommandBuilder()
-    .setName('chat')
-    .setDescription('Chat with Nexus AI')
+    .setName('nexus')
+    .setDescription('Chat with Nexus, your wasteland AI companion')
     .addStringOption(option =>
       option.setName('message')
-        .setDescription('Your message')
+        .setDescription('Your message to Nexus')
         .setRequired(true)),
   new SlashCommandBuilder()
     .setName('hello')
     .setDescription('Say hi to Nexus'),
   new SlashCommandBuilder()
     .setName('roll')
-    .setDescription('Roll a 6-sided die'),
+    .setDescription('Roll up to 5 six-sided dice')
+    .addIntegerOption(option =>
+      option
+        .setName('dice')
+        .setDescription('Number of dice to roll (1-5)')
+        .setRequired(true)
+        .setMinValue(1)
+        .setMaxValue(5)),
   new SlashCommandBuilder()
     .setName('userinfo')
     .setDescription('Get user info'),
@@ -48,13 +55,6 @@ const commands = [
         .setDescription('Subreddit (optional)')
         .setRequired(false)),
   new SlashCommandBuilder()
-    .setName('quote')
-    .setDescription('Get a quote')
-    .addStringOption(option =>
-      option.setName('who')
-        .setDescription('Author (e.g., yoda)')
-        .setRequired(false)),
-  new SlashCommandBuilder()
     .setName('skip')
     .setDescription('Skip current song'),
   new SlashCommandBuilder()
@@ -71,13 +71,6 @@ const commands = [
         .setDescription('Song name, YouTube URL, Spotify URL, or SoundCloud URL')
         .setRequired(true)),
   new SlashCommandBuilder()
-    .setName('seek')
-    .setDescription('Seek to a timestamp')
-    .addStringOption(option =>
-      option.setName('time')
-        .setDescription('Time in seconds or mm:ss')
-        .setRequired(true)),
-  new SlashCommandBuilder()
     .setName('ping')
     .setDescription('Check bot latency'),
   new SlashCommandBuilder()
@@ -87,10 +80,20 @@ const commands = [
       option.setName('question')
         .setDescription('Poll question')
         .setRequired(true))
-    .addIntegerOption(option =>
+    .addStringOption(option =>
       option.setName('duration')
-        .setDescription('Duration in minutes (default 5)')
-        .setRequired(false)),
+        .setDescription('Poll duration (e.g., "5 minutes", "2 hours", "1 day")')
+        .setRequired(true)
+        .addChoices(
+          { name: 'Minutes', value: 'minutes' },
+          { name: 'Hours', value: 'hours' },
+          { name: 'Days', value: 'days' }
+        ))
+    .addIntegerOption(option =>
+      option.setName('duration_value')
+        .setDescription('Duration value (e.g., 5 for 5 minutes/hours/days)')
+        .setRequired(true)
+        .setMinValue(1)),
   new SlashCommandBuilder()
     .setName('coinflip')
     .setDescription('Flip a coin'),
@@ -200,6 +203,15 @@ const commands = [
   new SlashCommandBuilder()
     .setName('history')
     .setDescription('View recently played songs'),
+  new SlashCommandBuilder()
+    .setName('tadpole')
+    .setDescription('Get Tadpole Exam questions and answers for a selected category'),
+  new SlashCommandBuilder()
+    .setName('possum')
+    .setDescription('Get Possum Exam questions and answers for a selected category'),
+  new SlashCommandBuilder()
+    .setName('grab')
+    .setDescription('Send the current song details to your DMs'),
 ].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);

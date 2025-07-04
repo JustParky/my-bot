@@ -1,0 +1,911 @@
+{
+  "categories": [
+    {
+      "name": "Archer",
+      "label": "Archer",
+      "value": "cat1",
+      "message": "Here are the possible questions and answers for the Archer Tadpole exam.",
+      "questions": [
+        {
+          "question": "Alice is taking aim at her target when she notices her rival Annie retrieving arrows from the target in the next lane. What should Alice do?",
+          "answer": "Aim the bow downward and slowly release tension on the bowstring"
+        },
+        {
+          "question": "An arrow is made of four parts - which is NOT one of them?",
+          "answer": "Shell"
+        },
+        {
+          "question": "Bows and arrows have been used for a long time! Around when do researchers say the first bows and arrows were created?",
+          "answer": "64,000 years ago"
+        },
+        {
+          "question": "Commies have invaded! Alex is a champion archer and wants to defend his country. What type of arrows should Alex use to penetrate the thick armor of the communist swine?",
+          "answer": "Bodkin Point"
+        },
+        {
+          "question": "Gene practices shooting his crossbow every day after work to prepare himself for the looming red menace. Gene is a(n)...",
+          "answer": "Arbalist"
+        },
+        {
+          "question": "It's the last shot in a tournament. You pull the bowstring back, breathe steadily, focus, and release. You hear the crowd roar as they see the bullseye you just hit! How many points did you score?",
+          "answer": "10"
+        },
+        {
+          "question": "Lisa studies and practices archery regularly. She talks about archery all the time and is honestly kind of annoying about it. Lisa is a(n)...",
+          "answer": "Toxophilite"
+        },
+        {
+          "question": "Only one person is truly responsible for your safety and the safety of others while on the range. Who is it?",
+          "answer": "You"
+        },
+        {
+          "question": "Richie is on the range and has finished shooting all of his arrows. What should he do now?",
+          "answer": "Wait for the all-clear signal from the supervising Mr. Handy"
+        },
+        {
+          "question": "Robbie is planning a bow-hunting trip to Seneca Rocks with his dad where they'll be hunting white-tailed deer. What type of arrowheads should they bring with them?",
+          "answer": "Broadhead Point"
+        },
+        {
+          "question": "The ballista was invented thousands of years ago in a Greek town called Syracuse. It is essentially a large version of what type of bow?",
+          "answer": "Crossbow"
+        },
+        {
+          "question": "While on the shooting line you hear the Mr. Handy instructor sound a whistle blow three times. How should you react?",
+          "answer": "Walk forward and retrieve your arrows"
+        },
+        {
+          "question": "You overhear a camp counselor bragging that they shot an arrow 320 per second. What type of unit were they most likely using to determine arrow speed?",
+          "answer": "FPS (Feet Per Second)"
+        },
+        {
+          "question": "You spot Billy at the end of the range with an apple on his head while Danny takes aim. What advice do you give?",
+          "answer": "None of the above"
+        },
+        {
+          "question": "You're at an archery tournament when you see your favorite archer telescoping an arrow - wow! How do you describe this feat to your best friend?",
+          "answer": "He shot an arrow which hit another arrow, splitting it down the middle!"
+        },
+        {
+          "question": "You're competing in an archery tournament at Camp Lewis. On the final shot, you land an arrow on the inner red ring - so close! How many points was this shot worth?",
+          "answer": "8"
+        },
+        {
+          "question": "You're crafting a crossbow at a nearby weapons workbench - which component will you NOT need for this project?",
+          "answer": "Compressor"
+        },
+        {
+          "question": "You're excited for your first big trip to the archery range at Camp Adams - hurray! One problem - you have a handful of sharp arrows. What type of bag should you carry the arrows in?",
+          "answer": "Quiver"
+        },
+        {
+          "question": "You're hiking through the woods when you spot your weird neighbor Jimmy blindly firing arrows into the sky. What should you do?",
+          "answer": "Find the nearest overhead cover and demand Jimmy lay down his bow"
+        },
+        {
+          "question": "Your best friend Johnny's dad spends his weekends crafting and selling bows. You've been saving your allowance for months to purchase a bow from such a gifted...",
+          "answer": "Bowyer"
+        }
+      ]
+    },
+    {
+      "name": "Athlete",
+      "label": "Athlete",
+      "value": "cat2",
+      "message": "Here are the possible questions and answers for the Athlete Tadpole exam.",
+      "questions": [
+        {
+          "question": "Alfonso is interested in football. He's a tall natural leader with a strong arm, and he knows every play in the book. What position would be best for Alfonso?",
+          "answer": "Quarterback"
+        },
+        {
+          "question": "As a cross country runner, you might be called a \"harrier\". What is a harrier?",
+          "answer": "A dog"
+        },
+        {
+          "question": "Barry is a strong baseball player who hits lots of home runs. What's the highest number of runs Barry can score on a single home run?",
+          "answer": "4"
+        },
+        {
+          "question": "Before a friendly kickball match, Samuel offers you a suspicious looking pill that you think may be Buffout. How do you respond?",
+          "answer": "Refuse and report him to the Scout Leader"
+        },
+        {
+          "question": "Brendan is a fast runner. Really fast! He might even run in the Olympics someday. Which sprinting event should he NOT train for if he wants to run an Olympic event?",
+          "answer": "10000 meter dash"
+        },
+        {
+          "question": "Hannah is training for a pentathlon, an event used to prepare athletes for the rigors of warfare. How many sports will she need to train for in order to compete?",
+          "answer": "5"
+        },
+        {
+          "question": "James wants to join the Army and fight the Reds, but he's out of shape. Eventually, he'll have to pass the Army's physical fitness test, which could be hard for him. Which of the following does he NOT he have to worry about being in the test?",
+          "answer": "Pull-ups"
+        },
+        {
+          "question": "Like to throw things? Who doesn't! In fact, there's probably a sport for throwing your favorite object. Which of these is thrown for sport?",
+          "answer": "Javelin"
+        },
+        {
+          "question": "Mark's favorite athletic event is wrestling. He idolizes famous wrestlers and wants to wrestle just like them. Which of these US Presidents has a reputation as a wrestler?",
+          "answer": "Abraham Lincoln"
+        },
+        {
+          "question": "Most athletes bulk up by lifting weights, but weightlifting itself is a competition as well! Only a few lifts are used in Olympic weightlifting, however. Which of these lifts is no longer used?",
+          "answer": "The clean and jerk"
+        },
+        {
+          "question": "Ricky loves riding his bicycle. He rides so much, he could probably compete in a Grand Tour! But there are a lot of stages to each Grand Tour event. How many?",
+          "answer": "21"
+        },
+        {
+          "question": "Susie is taking part in a long jump competition. She takes a running start, but stumbles at the last minute and only makes it three feet! How embarrassing, when the longest long jumpers can jump how far?",
+          "answer": "29 feet"
+        },
+        {
+          "question": "The \"shot put\" event uses a heavy sphere called a \"shot\". What do you do to the \"shot\" in this event?",
+          "answer": "Put it"
+        },
+        {
+          "question": "You're competing in a track and field race and have lined up at the starting line. An official will signal to begin. How does he do this?",
+          "answer": "Firing a starting gun"
+        },
+        {
+          "question": "You're entering a marathon for charity and are set to run on the streets of Charleston. How far will you be running?",
+          "answer": "26.219 miles"
+        },
+        {
+          "question": "You're going rock climbing with Mary, when she slips and begins to fall! Luckily, she's brought to a stop by a device attached to her rope. What is this device called?",
+          "answer": "A belay device"
+        },
+        {
+          "question": "You're on first base in a baseball game and decide to steal second base. How far do you have to run to get there?",
+          "answer": "90 feet"
+        },
+        {
+          "question": "You're playing ice hockey, and after checking a star player into the boards you're approached by a menacing figure who picks a fight with you. What is the name of this person's unofficial role on a hockey team?",
+          "answer": "Enforcer"
+        },
+        {
+          "question": "You're training for a marathon, and decide to push yourself to see how long you can run. Despite your best efforts, you can only go so far. What substance builds up in your muscles and causes this?",
+          "answer": "Lactic acid"
+        },
+        {
+          "question": "You've been running laps around the Charleston capital building for exercise and have noticed that after running long enough you start to feel really good. What is this sensation called?",
+          "answer": "Runner's high"
+        }
+      ]
+    },
+    {
+      "name": "Codebreaker",
+      "label": "Codebreaker",
+      "value": "cat3",
+      "message": "Here are the possible questions and answers for the Codebreaker Tadpole exam.",
+      "questions": [
+        {
+          "question": "Alfonso is having trouble figuring out a commie passcode and has decided to try brute-forcing a solution. How does he go about this?",
+          "answer": "Computing all possible solutions sequentially"
+        },
+        {
+          "question": "All computers operate using something called binary code. How many digits are used in binary?",
+          "answer": "2"
+        },
+        {
+          "question": "Brendan sent an encrypted message to a foreign national, but you were able to decrypt it because it had \"known plaintext\". What is \"plaintext\"?",
+          "answer": "Unencrypted information"
+        },
+        {
+          "question": "\"for(int i = 1; i > 10; i++)\" The condition in your code is flawed and the loop will not count from 1 to 10. How do you fix it?",
+          "answer": "i <= 10"
+        },
+        {
+          "question": "Hannah is sending you juicy gossip using symmetric-key cryptography. To decrypt her secret message, what do you BOTH need?",
+          "answer": "The same key"
+        },
+        {
+          "question": "How did the dirty Nazis encode their messages during World War II?",
+          "answer": "Enigma machines"
+        },
+        {
+          "question": "How might \"APPALACHIA\" be read when encoded with a Caesar cipher?",
+          "answer": "XII LC QEB XYLSB"
+        },
+        {
+          "question": "Samuel is upset at Mary. Samuel orders his Mr. Handy to hit Mary! His Mr. Handy won't obey. Why?",
+          "answer": "It violates the Mr. Handy's programming"
+        },
+        {
+          "question": "Susie wants to sign her name for a deaf friend using American Sign Language. What sign should she make first?",
+          "answer": "A closed fist with thumb over middle finger"
+        },
+        {
+          "question": "Which Founding Father invented a disk cipher later used by the US Army?",
+          "answer": "Thomas Jefferson"
+        },
+        {
+          "question": "Which cipher, named for a French diplomat, was used by the Confederacy during the Civil War?",
+          "answer": "The Vigenere cipher"
+        },
+        {
+          "question": "Which mythical device gave its name to this infamous kind of computer virus?",
+          "answer": "The Trojan Horse"
+        },
+        {
+          "question": "Which of these big words means \"solving coded communications\"?",
+          "answer": "Cryptanalysis"
+        },
+        {
+          "question": "Which of these patriotic languages did our fine fighting men use as an unbreakable code during World War II?",
+          "answer": "Navajo"
+        },
+        {
+          "question": "You need to send a coded warning to Washington D.C. using a \"Templar cipher\". What shape will you use in your cipher?",
+          "answer": "A cross"
+        },
+        {
+          "question": "You suspect Samuel is a commie. His favorite subject is history, and he uses four numbers for his terminal password. What historical year might his password be?",
+          "answer": "1917"
+        },
+        {
+          "question": "You want to record an encoded holotape with information on potential traitors to send to Mary through your terminal. What kind of software encodes the holotape?",
+          "answer": "A codec"
+        },
+        {
+          "question": "You're lost in the woods and need to use Morse code to signal other scouts for help. Which signal do you send?",
+          "answer": "…———…"
+        },
+        {
+          "question": "You're operating your shortwave radio and come across a strange broadcast. After listening for a while, you realize it's commie propaganda! What do you do?",
+          "answer": "Report it to the authorities immediately!"
+        },
+        {
+          "question": "Your Mr. Handy is a master codebreaker, much better than the first codebreaking computers. What were those old junk heaps called?",
+          "answer": "Colossi"
+        },
+        {
+          "question": "Your data is only as secure as its weakest link! And what would that be?",
+          "answer": "You"
+        }
+      ]
+    },
+    {
+      "name": "Cook",
+      "label": "Cook",
+      "value": "cat4",
+      "message": "Here are the possible questions and answers for the Cook Tadpole exam.",
+      "questions": [
+        {
+          "question": "\"A watched pot never...\"",
+          "answer": "Boils"
+        },
+        {
+          "question": "Alfred wants to bring his \"famous\" cranberry jam to Thanksgiving dinner. What ingredients will he need?",
+          "answer": "Cranberries, Carrot Flower, Sugar, Water"
+        },
+        {
+          "question": "Browning meat on a pan is an example of what kind of chemical reaction?",
+          "answer": "Maillard Reaction"
+        },
+        {
+          "question": "Carlos adds a pinch of salt to his water before boiling it. What effect does this have on the water?",
+          "answer": "Increases the boiling point of the water"
+        },
+        {
+          "question": "Coating moist food with a dry ingredient like flour or breadcrumbs before cooking it is known as what?",
+          "answer": "Dredging"
+        },
+        {
+          "question": "It's time to dice vegetables! What's the safest practice?",
+          "answer": "Hold with your fingers clenched inward"
+        },
+        {
+          "question": "Jackie wants to cook the perfect spaghetti, but wants to know when to test if the noodles are done. What should you suggest?",
+          "answer": "Use a spoon to fish out one noodle for taste test"
+        },
+        {
+          "question": "Mary asked you to bring sweetbread to the big party. Wait... what is sweetbread?",
+          "answer": "The thymus gland of an animal"
+        },
+        {
+          "question": "Molly wants to make steak tartare. How long will she have to cook the steak?",
+          "answer": "Serve it raw"
+        },
+        {
+          "question": "Now for a special sponsored question from CRAM: \"When in doubt, just go with...\"",
+          "answer": "CRAM!"
+        },
+        {
+          "question": "Ruby won't stop talking about her double boiler. What is she able to use it for?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "Sauerkraut, pickles, beer, and yogurt are all products of what process?",
+          "answer": "Fermentation"
+        },
+        {
+          "question": "Sheila is cooking with grease when suddenly, the pan catches fire! What should she do?",
+          "answer": "Place the lid back on the pan and wait for the fire to run out of oxygen"
+        },
+        {
+          "question": "Vince wants to impress his new lady friend by cooking her a chicken dinner. What should the internal temperature of the chicken be to ensure he doesn't kill her?",
+          "answer": "165 degrees"
+        },
+        {
+          "question": "What is the name of the red liquid that pours out of a steak after cutting it?",
+          "answer": "Myoglobin"
+        },
+        {
+          "question": "What type of objects should NOT be placed into fondue?",
+          "answer": "Hands"
+        },
+        {
+          "question": "You find a recipe for baking bread; water, salt, flour, and something unreadable. What's the fourth ingredient?",
+          "answer": "Yeast"
+        },
+        {
+          "question": "You see your pal Mike start to eat a piece of raw burger. You stop him by reminding him that eating raw meat can cause...",
+          "answer": "All of the above"
+        },
+        {
+          "question": "You're headed to the Super-Duper Mart to get ingredients for your dad's favorite meal, head cheese. What's the main ingredient?",
+          "answer": "An actual animal head"
+        },
+        {
+          "question": "Your teacher called you a mycophile! You were mildly offended until you realized it meant your hobby was...",
+          "answer": "Foraging for wild edible mushrooms"
+        }
+      ]
+    },
+    {
+      "name": "Entomologist",
+      "label": "Entomologist",
+      "value": "cat5",
+      "message": "Here are the possible questions and answers for the Entomologist Tadpole exam.",
+      "questions": [
+        {
+          "question": "Ants live all over the planet. In fact, they live just about everywhere! But there is one place you won't find any ant colonies. Where?",
+          "answer": "Antarctica"
+        },
+        {
+          "question": "Ants may be tiny, but they sure are strong! They can lift well over their weight. How much can they lift?",
+          "answer": "100x their weight"
+        },
+        {
+          "question": "Before reaching adulthood, a house fly enters what stage of its life cycle?",
+          "answer": "Pupa"
+        },
+        {
+          "question": "Caterpillars go through some changes in their life as they grow older. Sound familiar, kids? But in the end they turn into a beautiful new creature! What creature?",
+          "answer": "A butterfly"
+        },
+        {
+          "question": "Female praying mantises get a bad rap for their aggressive mating habits. But can you really blame them for wanting to do this to their mates from time to time?",
+          "answer": "Kill and eat them"
+        },
+        {
+          "question": "Insects are invertebrates, meaning they make due without a certain body part. Which body part do invertebrates go without?",
+          "answer": "Spine"
+        },
+        {
+          "question": "Insects' bodies are made up of three parts. Which of these is NOT one of these three parts?",
+          "answer": "Pelvis"
+        },
+        {
+          "question": "Instead of tongues, insects may have long tubes coming from their mouths that they can use to suck up nutrients. What is this tube called?",
+          "answer": "A proboscis"
+        },
+        {
+          "question": "Lots of bugs look like insects, but aren't. Which of the following bugs is NOT an insect?",
+          "answer": "A spider"
+        },
+        {
+          "question": "Not all bugs are insects! Which of these creepy crawlies is NOT an insect?",
+          "answer": "Spiders"
+        },
+        {
+          "question": "Mary loves to go down to the riverbank at night to catch fireflies. These cute little insects glow in the dark! What process gives fireflies their special glow?",
+          "answer": "Bioluminescence"
+        },
+        {
+          "question": "Mayflies live notoriously short lives, the poor things. If you were a mayfly, how long could you expect to live?",
+          "answer": "Several hours"
+        },
+        {
+          "question": "Mosquitoes are tiny insects that fly around sucking the blood out of bigger creatures. What do they use this blood for?",
+          "answer": "Making eggs"
+        },
+        {
+          "question": "Periodical cicadas spend most of their lives underground. Why do they eventually emerge?",
+          "answer": "To mate and lay eggs"
+        },
+        {
+          "question": "Roaches can survive almost anything, it seems, even nuclear radiation. In fact, a roach can survive for a while without its head! How long?",
+          "answer": "Over a week"
+        },
+        {
+          "question": "Samuel is an athlete who spends lots of time running and jumping everywhere he goes. If he had a super power, he'd want to jump as far as a flea! How far would that be?",
+          "answer": "The length of a football field"
+        },
+        {
+          "question": "Susie is learning to identify insects. She knows that insects have certain special features to look for that other animals don't. Which of these is a defining feature of insects?",
+          "answer": "Having six legs"
+        },
+        {
+          "question": "There are a lot of people in the world, but there are way more insects! In fact, one out of every four creatures on Earth is which kind of insect?",
+          "answer": "A beetle"
+        },
+        {
+          "question": "Timmy wants to grow up big and strong like his favorite beetle! What kind of beetle can move something that is over 1000 times heavier than its own body weight?",
+          "answer": "Dung Beetle"
+        },
+        {
+          "question": "Wendy is volunteering as a beekeeper at summer camp. Beekeepers harvest all kinds of useful things from the bees they keep. Which of the following treats do we NOT harvest from bees?",
+          "answer": "Flowers"
+        },
+        {
+          "question": "Which of these insects was especially sacred to the ancient Egyptians?",
+          "answer": "Scarab beetles"
+        }
+      ]
+    },
+    {
+      "name": "Herpetologist",
+      "label": "Herpetologist",
+      "value": "cat6",
+      "message": "Here are the possible questions and answers for the Herpetologist Tadpole exam.",
+      "questions": [
+        {
+          "question": "A collection of eggs laid by reptiles and amphibians are called a...",
+          "answer": "Clutch"
+        },
+        {
+          "question": "Alex is on a hike and crosses paths with a horned lizard. The horned lizard is notorious for their ability to...",
+          "answer": "Shoot blood from their eyes"
+        },
+        {
+          "question": "Many reptiles are ectothermic, which means they...",
+          "answer": "Must rely on external heat sources to regulate body temperature"
+        },
+        {
+          "question": "Marcus has just ingested the poison of the Colorado River Toad - oops! What side effects can Marcus expect?",
+          "answer": "Euphoria and vivid hallucinations"
+        },
+        {
+          "question": "Matthew has just been bitten by a Water Moccasin! The Water Moccasin's venom is hemotoxic. What symptoms will Matthew soon experience?",
+          "answer": "Pain and swelling in the bite area"
+        },
+        {
+          "question": "Of the following, which is the largest?",
+          "answer": "Japanese Giant Salamander"
+        },
+        {
+          "question": "Salamanders are an example of a...",
+          "answer": "Carnivore"
+        },
+        {
+          "question": "Sally wants to try and find reptiles and amphibians on a hike in West Virginia. Which is she not likely to see?",
+          "answer": "Alligators"
+        },
+        {
+          "question": "Sheila is making a Rain Forest Stew. Which ingredient is most likely to kill her?",
+          "answer": "Golden Dart Frog"
+        },
+        {
+          "question": "Susan finds a Testudine on its back on the side of the road. What did Susan just find?",
+          "answer": "An alligator Snapping Turtle"
+        },
+        {
+          "question": "The blue-tongued skink is known for...",
+          "answer": "All of the above"
+        },
+        {
+          "question": "The Jackson's Chameleon is native to East Africa, however it was introduced to the United States in the 1970s. This is an example of...",
+          "answer": "Invasive species"
+        },
+        {
+          "question": "The most important difference between poisonous and venomous is...",
+          "answer": "Poisons are ingested, venom is injected"
+        },
+        {
+          "question": "Tommy's just been bitten by a Black Mamba! If Tommy can't receive medical attention, how long does Tommy have to live?",
+          "answer": "30 minutes"
+        },
+        {
+          "question": "Wendy has just been bitten by a Coral Snake! The Coral Snake's venom is neurotoxic. What symptoms will Wendy soon experience?",
+          "answer": "Paralysis and respiratory failure"
+        },
+        {
+          "question": "What is the main difference between a Frog and a Toad?",
+          "answer": "Frogs have smooth mucus-covered skin, toads have rough, dry skin"
+        },
+        {
+          "question": "What is the main difference between a Turtle and a Tortoise?",
+          "answer": "Turtles live near water while Tortoises live on land"
+        },
+        {
+          "question": "When the Hairy Frog (Thrichobatrachus robustus) is threatened, what defense mechanism would one expect it to use?",
+          "answer": "Break its own toe bones and use them as claws"
+        },
+        {
+          "question": "Which of the following is not venomous?",
+          "answer": "Bullfrog"
+        },
+        {
+          "question": "Your pet iguana is being threatened by the family dog. What would be a common defense mechanism employed by the iguana?",
+          "answer": "Shed its own tail as a distraction"
+        }
+      ]
+    },
+    {
+      "name": "Hunter",
+      "label": "Hunter",
+      "value": "cat7",
+      "message": "Here are the possible questions and answers for the Hunter Tadpole exam.",
+      "questions": [
+        {
+          "question": "A black bear has been stealing food from your campsite and you want to rig a trap to catch it. What kind of trap do you use?",
+          "answer": "A leg-hold trap"
+        },
+        {
+          "question": "Alex takes aim at a boar with his hunting rifle, but when he squeezes the trigger his gun explodes! How could Alex have prevented this?",
+          "answer": "Maintained his firearm properly"
+        },
+        {
+          "question": "Alfonso wants to go hunting commies. He has four dog breeds available as possible hunting companions. Which would you pick to track a human?",
+          "answer": "Bloodhound"
+        },
+        {
+          "question": "Brendan wants to hook bass on Summersville Lake. When should he go to get the most bites?",
+          "answer": "None of the above"
+        },
+        {
+          "question": "Hannah is hunting game, but her tracking skills aren't the best. She asks you if you have any leads. Where might she start looking?",
+          "answer": "A trail or desire path"
+        },
+        {
+          "question": "Mark is reading up on birds to hunt. Some birds have been hunted so much that they're all gone! Which of these was hunted to extinction in the 1900s?",
+          "answer": "The passenger pigeon"
+        },
+        {
+          "question": "Mary loves rabbits. They're so cute and furry, and the way they hop makes her laugh! She decides to trap a rabbit to take home as a pet. Which of these traps would be effective?",
+          "answer": "A snare"
+        },
+        {
+          "question": "Samuel wants to go duck hunting, but can't decide which gun to bring. What would you recommend?",
+          "answer": "Shotgun"
+        },
+        {
+          "question": "Susie loves deer and their silky coats. She decides to tan a deer hide to put in her cabin. Which type of skinning should she use to prepare a deer for tanning?",
+          "answer": "Open skinning"
+        },
+        {
+          "question": "The government in Charleston decides it's open season to hunt feral pigs in Appalachia. This is because they are what kind of species here?",
+          "answer": "Invasive"
+        },
+        {
+          "question": "There are many different ways that you can catch a fish. Which one of these is NOT a proper technique?",
+          "answer": "Using your boot to stomp on them"
+        },
+        {
+          "question": "When hiking in the woods, always be prepared for an encounter with Appalachia's most powerful predator: the bear. Which kind of bear is most common in Appalachia?",
+          "answer": "American black bear"
+        },
+        {
+          "question": "You meet Brendan out deer hunting, but know he doesn't have a license. He says that he's been hunting before and that everything will be fine. What do you do?",
+          "answer": "Turn him in for poaching"
+        },
+        {
+          "question": "You're bird hunting on Summersville Lake, but can't get close enough to take a good shot. What could you use to lure birds closer?",
+          "answer": "Decoys"
+        },
+        {
+          "question": "You're going hunting with your great-great-grandfather's old-fashioned black powder rifle. What do you need to bring to reload?",
+          "answer": "A ramrod"
+        },
+        {
+          "question": "You're hunting in the forest and want to lie low and wait for game to come to you. What could you use to help stay hidden?",
+          "answer": "A blind"
+        },
+        {
+          "question": "You're in a good hunting spot and waiting for game to appear when you hear a sharp barking sound. Which animal probably made this call?",
+          "answer": "A red fox"
+        },
+        {
+          "question": "You're looking to harvest some salmon to create bear bait. When Salmon reproduce, they gather in large numbers. Where can you find them at this time?",
+          "answer": "Freshwater rivers"
+        },
+        {
+          "question": "You're tracking an animal through the forest when you feel something squishy beneath your feet... Looks like you've stepped in pellet shaped droppings. Which of these animals probably left them?",
+          "answer": "A deer"
+        },
+        {
+          "question": "You've decided to go hunting and need to bring the right caliber ammo for your hunting rifle. What caliber do you bring?",
+          "answer": ".308 caliber"
+        },
+        {
+          "question": "You've taken your kill back to the butcher, and he explains the different cuts of meat on the animal. Which of these cuts comes from the animal's leg?",
+          "answer": "Shank"
+        }
+      ]
+    },
+    {
+      "name": "Mammologist",
+      "label": "Mammologist",
+      "value": "cat8",
+      "message": "Here are the possible questions and answers for the Mammologist Tadpole exam.",
+      "questions": [
+        {
+          "question": "Alfonso is afraid of bats. They can get so big! How long is the wingspan on the largest bats?",
+          "answer": "5'7\""
+        },
+        {
+          "question": "Australia is home to a class of mammals called marsupials. What's special about most marsupials that's different from other mammals?",
+          "answer": "They raise young in a pouch"
+        },
+        {
+          "question": "Brendan likes to sleep. A lot. He even sleeps in class! Which of these mammals is also known for sleeping a lot in the winter?",
+          "answer": "Bears"
+        },
+        {
+          "question": "Erin loves canines, especially large ones! Which of these does she love the most?",
+          "answer": "Wolves"
+        },
+        {
+          "question": "George would rather study dinosaurs than mammals because they're big and scary. But mammals can get big and scary, too. And they're still around! What is the largest living mammal?",
+          "answer": "Blue whale"
+        },
+        {
+          "question": "Hannah is from Alaska, and says that an iconic Alaskan mammal is actually a type of deer! Which mammal?",
+          "answer": "Moose"
+        },
+        {
+          "question": "Hao is teaching her friends about Chinese mythology. She says that in folklore the spirits of mistreated animals can become demons. What are they called?",
+          "answer": "Youkai"
+        },
+        {
+          "question": "Humans are mammals, too! What is something that makes you different from a chimpanzee?",
+          "answer": "I stand up straight"
+        },
+        {
+          "question": "Mammals are broken into over twenty \"orders\". Which of these orders has the most mammals in it?",
+          "answer": "Rodents"
+        },
+        {
+          "question": "Most mammals have babies the same way as humans. But one mammal actually lays eggs! Which mammal?",
+          "answer": "Echidna"
+        },
+        {
+          "question": "Samuel was out in the woods when he drew a big bear's attention! He played dead until it went away. Which of these mammals did he emulate?",
+          "answer": "Opossum"
+        },
+        {
+          "question": "Sloths are slow moving mammals that live in trees. Millions of years ago, though, there were huge sloths that lived on the ground! How big did these \"megasloths\" get?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "Snippers is a good house cat. He eats his food and uses his litter box, just like he's supposed to. Which ancient country can we thank for domesticating cats like Snippers?",
+          "answer": "Egypt"
+        },
+        {
+          "question": "Spot is a hunting dog. He likes to hunt bunnies and birds. What do African wild dogs like to hunt?",
+          "answer": "Antelopes"
+        },
+        {
+          "question": "Susie lives near the Emmett Mountain Disposal Site and has a pet naked mole-rat named Jiffy. Why is Jiffy a good pet to have in this location?",
+          "answer": "He's cancer resistant"
+        },
+        {
+          "question": "Susie wants to run really fast like her favorite mammal, so she practices running laps every day! Which mammal is the fastest on land?",
+          "answer": "Cheetahs"
+        },
+        {
+          "question": "The mammary glands of female mammals produces which liquid after giving birth to their young?",
+          "answer": "Milk"
+        },
+        {
+          "question": "West Virginia cattle are good eating, and the cattle love to eat, too! In fact, their stomachs have several compartments. How many?",
+          "answer": "4"
+        },
+        {
+          "question": "What walks on four legs in the morning, two legs in the afternoon, three legs in the evening, and no legs at night?",
+          "answer": "A human"
+        },
+        {
+          "question": "Which of these traits is different in mammals than in reptiles?",
+          "answer": "They have hair"
+        },
+        {
+          "question": "You and Mary were both given pet rabbits as Christmas gifts. Mary's rabbit is a girl, called a \"doe\". Yours is a boy. What are boy rabbits called?",
+          "answer": "Bucks"
+        },
+        {
+          "question": "You're hiking in the woods near your house and spot a red fox. Red foxes are native to North America. Which of these continents are they not native to?",
+          "answer": "Australia"
+        }
+      ]
+    },
+    {
+      "name": "Medic",
+      "label": "Medic",
+      "value": "cat9",
+      "message": "Here are the possible questions and answers for the Medic Tadpole exam.",
+      "questions": [
+        {
+          "question": "Alfonso is earning spending money by working in the Garrahan coal mines after school. His father Ricardo is a mine worker, and is always coughing and wheezing. What condition is Alfonso risking by working in the mines?",
+          "answer": "Black lung"
+        },
+        {
+          "question": "Believe it or not, blood cells come in several different colors! Which of these is a type of blood cell?",
+          "answer": "White"
+        },
+        {
+          "question": "Brendan is at the firing range when Samuel accidentally clips him with a live round from his shotgun! He's lost a lot of blood. What will you do to restore it?",
+          "answer": "Hook up a blood pack intravenously"
+        },
+        {
+          "question": "Hannah is afraid of fireworks. At last year's Fourth of July celebration, a faulty firework exploded right behind her! Now loud sounds make her jump and shiver. What do you call this condition?",
+          "answer": "Shell Shock"
+        },
+        {
+          "question": "Mary works at the steel mill after school. One day, a heavy piece of equipment falls and makes a big gash on her thigh! Which of these muscles did she just injure?",
+          "answer": "Rectus femoris"
+        },
+        {
+          "question": "Samuel drank some icky water from a pond on a hiking trip. Now he's feeling awful! He has diarrhea, stomach pains, and fluid loss. Which disease might Samuel have contracted?",
+          "answer": "Dysentery"
+        },
+        {
+          "question": "Susie is playing in her tree house. She loses her balance and falls to the ground, breaking the bone in her upper arm, below her shoulder. Which bone did Susie break?",
+          "answer": "Humerus"
+        },
+        {
+          "question": "Susie's grandmother is comatose on life support. As her physician, you hold her fate in your hands. What is the ethical decision?",
+          "answer": "Let her family decide"
+        },
+        {
+          "question": "The day has come and the bombs have fallen. Where do you go to stay safe from the radiation?",
+          "answer": "My designated Vault-Tec vault"
+        },
+        {
+          "question": "The other scouts are excited for your field trip to Poseidon Energy's plant, but you're worried about the effects of radiation. What do you do?",
+          "answer": "Stop worrying, as nuclear power is 100% safe and effective"
+        },
+        {
+          "question": "We use the rod of a mythical figure as the symbol of the medical profession. Which figure?",
+          "answer": "Asclepius"
+        },
+        {
+          "question": "Which of the following is NOT a symptom of radiation sickness?",
+          "answer": "Hydrophobia"
+        },
+        {
+          "question": "Which of the following is NOT a type of cancer?",
+          "answer": "Hemophilia"
+        },
+        {
+          "question": "Which of the following is NOT a type of physician?",
+          "answer": "Astrologist"
+        },
+        {
+          "question": "While rock climbing on a scout trip, you lose your grip and take a tumble, injuring your arm. You decide to apply a tourniquet to stop the bleeding. Where do you tie the tourniquet?",
+          "answer": "A few inches above the wound"
+        },
+        {
+          "question": "You and Richard are mountain biking when he hits a rock and tumbles into a tree, breaking his leg! What tool do you use to hold the bone in place until help arrives?",
+          "answer": "A splint"
+        },
+        {
+          "question": "You come across a hopeless chem addict while doing good deeds around town. The addict begs you for money or chems. How do you respond?",
+          "answer": "Treat her with Addictol"
+        },
+        {
+          "question": "You're helping Mr. Hannock cross the street when he doubles over clutching his chest! This is a symptom of which of the following?",
+          "answer": "Heart attack"
+        },
+        {
+          "question": "You're preparing for a hiking trip and want to make some healing salves in case of injury. Which of these could you use as an ingredient?",
+          "answer": "Bloodleaf"
+        },
+        {
+          "question": "You're the on-duty medic at the archery range. Ricky goes out to retrieve his arrow during live fire and is shot through the knee! What do you do?",
+          "answer": "Call an ambulance!"
+        }
+      ]
+    },
+    {
+      "name": "Swimmer",
+      "label": "Swimmer",
+      "value": "cat10",
+      "message": "Here are the possible questions and answers for the Swimmer Tadpole exam.",
+      "questions": [
+        {
+          "question": "Billy is running around Wavy Willard's Water Park when the lifeguard blows a whistle and points at him. What should Billy do?",
+          "answer": "Immediately stop running to avoid slipping on a slick surface"
+        },
+        {
+          "question": "It's a late night at summer camp and you can't sleep so you decide to go for a swim in the lake. As you leave, your swimming instructor yells at you. What did you do wrong?",
+          "answer": "You forgot that swimming alone is extremely dangerous"
+        },
+        {
+          "question": "Little Lizzie is scared of swimming in the local community pool. What aspect of swimming pools should she actually be concerned about?",
+          "answer": "The water is too deep for some non-swimmers"
+        },
+        {
+          "question": "Steve the troublemaker is trying to trick people into thinking his made-up swimming stroke is real. What is the name of this obviously fake stroke?",
+          "answer": "Speed Stroke"
+        },
+        {
+          "question": "Suzie is just learning to swim and is nervous about getting in the water. You teach her several techniques to stay afloat without an aid, which makes her feel better. Which is NOT one of those techniques?",
+          "answer": "Flailing"
+        },
+        {
+          "question": "The impossible happens and the evil commies manage to launch a nuke on American soil! How does this impact your swimming routines?",
+          "answer": "All water sources are likely to be heavily irradiated, so swimming should be avoided"
+        },
+        {
+          "question": "Timothy is bragging about all the health benefits he gets from being a regular swimmer. At what point in his tiresome prattle do you smugly stop and correct him?",
+          "answer": "His declaration about the water giving him baby soft skin"
+        },
+        {
+          "question": "What is the correct way to revive a drowning victim?",
+          "answer": "Turn the victim's head to the side to drain water, then back to the center for mouth-to-mouth resuscitation"
+        },
+        {
+          "question": "What is the primary purpose of a swimming buddy?",
+          "answer": "To have someone that can alert the lifeguard in the case of an emergency"
+        },
+        {
+          "question": "Which is the proper way to breathe while swimming?",
+          "answer": "Alternate between having your face in the water and rhythmically breathing between strokes"
+        },
+        {
+          "question": "Which of the following is NOT an authorized aquatic Pioneer Scout activity?",
+          "answer": "Breath-holding competition"
+        },
+        {
+          "question": "Which of the following is NOT one of the risks unique to swimming in open waters like lakes, rivers and oceans?",
+          "answer": "Drowning"
+        },
+        {
+          "question": "Which of the following is best to consume before a swimming session in order to keep your energy up?",
+          "answer": "A light snack"
+        },
+        {
+          "question": "You find yourself struggling against a river current after your canoe tips over! Which of the following is bad advice to follow in this situation?",
+          "answer": "Give up and drown"
+        },
+        {
+          "question": "You see Billy struggling to stay afloat in the swimming pool. You want to help him but you just dried off! Which is NOT an appropriate rescue technique?",
+          "answer": "Wave"
+        },
+        {
+          "question": "You're assigned the task of inspecting all of the life jackets being handed out to your fellow scouts. Which is NOT something that you need to verify during the inspection?",
+          "answer": "The jackets are all the required shade of orange"
+        },
+        {
+          "question": "You're in a fishing vessel off the coast when the boat capsizes! You remember the words of your Pioneer Scout swim instructor and start to survival float! What are you doing?",
+          "answer": "Face-down in the water with hands out and palms down, lifting your head to take deep breaths"
+        },
+        {
+          "question": "You're vacationing at Summersville Lake and decide to dive into the water - what fun! But wait - how deep did the swimming instructor say the water should be before attempting a dive?",
+          "answer": "A minimum of 7 feet deep should keep you safe!"
+        },
+        {
+          "question": "Your friend Marie asks for a stick of gum before her swim. How do you respond?",
+          "answer": "Refuse to give her one, as chewing gum while swimming is a dangerous choking hazard"
+        },
+        {
+          "question": "Your strange friend Miguel is a major hypochondriac, and has given you a giant list of health concerns he has with swimming. Which item on his list can you say he definitely shouldn't worry about?",
+          "answer": "Xerophobia"
+        }
+      ]
+    },
+    {
+      "name": "Category 11",
+      "label": "Category 11",
+      "value": "cat11",
+      "message": "No questions are available for Category 11 at this time.",
+      "questions": []
+    }
+  ]
+}

@@ -36,13 +36,28 @@ function firstResultOrFail(arr, what) {
   return arr[0];
 }
 
+function cleanYouTubeURL(url) {
+  try {
+    const urlObj = new URL(url);
+    const videoId = urlObj.searchParams.get('v') || url.match(/youtu\.be\/([0-9A-Za-z_-]{11})/)?.[1];
+    if (videoId) {
+      return `https://www.youtube.com/watch?v=${videoId}`;
+    }
+    return url;
+  } catch (err) {
+    console.warn(`Invalid URL format: ${url}, returning original`);
+    return url;
+  }
+}
+
 function validateYouTubeURL(url) {
   return ytdl.validateURL(url) ? url : null;
 }
 
 function extractYouTubeID(url) {
-  if (!validateYouTubeURL(url)) return '';
-  const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/) || url.match(/youtu\.be\/([0-9A-Za-z_-]{11})/);
+  const cleanedUrl = cleanYouTubeURL(url);
+  if (!validateYouTubeURL(cleanedUrl)) return '';
+  const match = cleanedUrl.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/) || cleanedUrl.match(/youtu\.be\/([0-9A-Za-z_-]{11})/);
   return match ? match[1] : '';
 }
 
@@ -63,38 +78,76 @@ async function getOrJoinVoiceChannel(member, guildId, adapterCreator) {
   return connection;
 }
 
-async function getStream(url) {
-  console.log(`Getting stream for URL: ${url}`);
-  if (validateYouTubeURL(url)) {
+async function getStream(url, retries = 3, delay = 10000) {
+  const cleanedUrl = cleanYouTubeURL(url);
+  console.log(`Getting stream for cleaned URL: ${cleanedUrl}, attempt ${4 - retries}`);
+  for (let i = 0; i < retries; i++) {
     try {
-      const stream = ytdl(url, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
-      console.log('Stream obtained from ytdl-core');
-      return stream;
-    } catch (ytdlError) {
-      console.warn('ytdl-core failed, trying play-dl:', ytdlError.message);
-      try {
-        const stream = await play.stream(url, { source: 'yt', timeout: 5000 });
-        console.log('Stream obtained from play-dl');
-        return stream.stream;
-      } catch (e) {
-        console.error('play-dl failed:', e.message);
-        throw new Error('Failed to get stream');
+      if (validateYouTubeURL(cleanedUrl)) {
+        // Set YouTube API key for play-dl if available
+        if (process.env.YOUTUBE_API_KEY) {
+          await play.setToken({ youtube: { key: process.env.YOUTUBE_API_KEY } });
+        }
+        // Try play-dl first
+        try {
+          console.log('Attempting to get stream with play-dl');
+          const streamInfo = await play.stream(cleanedUrl, { source: 'yt', timeout: 15000 });
+          console.log('Stream obtained from play-dl');
+          return streamInfo.stream;
+        } catch (playDlError) {
+          console.warn(`play-dl failed: ${playDlError.message}`);
+          console.log('Falling back to ytdl-core');
+          try {
+            const stream = ytdl(cleanedUrl, {
+              filter: 'audioonly',
+              quality: 'highestaudio',
+              highWaterMark: 1 << 25,
+              requestOptions: {
+                headers: {
+                  'User-Agent': i % 2 === 0
+                    ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                    : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15',
+                },
+                ...(process.env.YOUTUBE_API_KEY && { apiKey: process.env.YOUTUBE_API_KEY }),
+              },
+            });
+            stream.on('error', (err) => console.error(`Stream error for ${cleanedUrl}: ${err.message}`));
+            console.log('Stream obtained from ytdl-core');
+            return stream;
+          } catch (ytdlError) {
+            console.error(`ytdl-core failed: ${ytdlError.message}`);
+            if (i < retries - 1) {
+              console.log(`Retrying after ${delay}ms...`);
+              await new Promise((resolve) => setTimeout(resolve, delay));
+              continue;
+            }
+            throw new Error(`Failed to get YouTube stream: ${ytdlError.message}`);
+          }
+        }
+      } else {
+        // Non-YouTube URLs
+        try {
+          console.log('Attempting to get stream with play-dl for non-YouTube URL');
+          const streamInfo = await play.stream(cleanedUrl, {
+            source: cleanedUrl.includes('soundcloud.com') ? 'so' : 'yt',
+            timeout: 15000,
+          });
+          console.log('Stream obtained from play-dl');
+          return streamInfo.stream;
+        } catch (playDlError) {
+          console.error(`play-dl failed for non-YouTube URL: ${playDlError.message}`);
+          if (i < retries - 1) {
+            console.log(`Retrying after ${delay}ms...`);
+            await new Promise((resolve) => setTimeout(resolve, delay));
+            continue;
+          }
+          throw new Error(`Failed to get stream: ${playDlError.message}`);
+        }
       }
-    }
-  } else {
-    try {
-      const stream = await play.stream(url, { source: url.includes('soundcloud.com') ? 'so' : 'yt', timeout: 5000 });
-      console.log('Stream obtained from play-dl');
-      return stream.stream;
-    } catch (e) {
-      console.warn('play-dl failed, using ytdl-core:', e.message);
-      try {
-        const stream = ytdl(url, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
-        console.log('Stream obtained from ytdl-core');
-        return stream;
-      } catch (ytdlError) {
-        console.error('ytdl-core failed:', ytdlError.message);
-        throw new Error('Failed to get stream');
+    } catch (error) {
+      console.error(`Attempt ${i + 1} failed: ${error.message}`);
+      if (i === retries - 1) {
+        throw new Error(`Stream retrieval failed after ${retries} attempts: ${error.message}`);
       }
     }
   }
@@ -108,4 +161,5 @@ module.exports = {
   extractYouTubeID,
   getOrJoinVoiceChannel,
   getStream,
+  cleanYouTubeURL,
 };

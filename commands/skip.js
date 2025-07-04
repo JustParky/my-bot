@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
-const { ServerQueue } = require('../utils');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,26 +7,26 @@ module.exports = {
   permissions: [],
   async execute(interaction, { queues, player }) {
     console.log('Executing /skip command');
-    await interaction.deferReply();
+    await interaction.deferReply({ flags: 64 });
     const guildId = interaction.guildId;
     const member = interaction.member;
 
     try {
       const serverQueue = queues.get(guildId);
       if (!serverQueue || !serverQueue.currentSong) {
-        return interaction.editReply('❌ No music is currently playing.');
+        return interaction.editReply({ content: '❌ No music is currently playing.', flags: 64 });
       }
 
       if (member.user.id !== serverQueue.currentSong.requestedBy && !member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
-        return interaction.editReply('❌ You cannot skip this song. Use /vote_skip instead.');
+        return interaction.editReply({ content: '❌ You cannot skip this song. Use /vote_skip instead.', flags: 64 });
       }
 
       serverQueue.skipVotes.clear();
       player.stop();
-      await interaction.editReply('⏭ Skipped the current song.');
+      await interaction.editReply({ content: '⏭ Skipped the current song.', flags: 64 });
     } catch (error) {
       console.error('Error in /skip command:', error.message);
-      await interaction.editReply(`❌ Error: ${error.message}`);
+      await interaction.editReply({ content: `❌ Error: ${error.message}`, flags: 64 });
     }
   },
 };

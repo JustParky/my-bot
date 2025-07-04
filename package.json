@@ -15,5 +15,6 @@
     "dotenv": "^16.4.5",
     "genius-lyrics": "^4.4.6",
     "play-dl": "^1.9.7"
-  }
+  },
+  "nodeVersion": "23.1.0"
 }

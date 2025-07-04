@@ -1,0 +1,1236 @@
+{
+  "categories": [
+    {
+      "name": "Atomics Fan",
+      "label": "Atomics Fan",
+      "value": "pos1",
+      "message": "Here are the possible questions and answers for the Atomics Fan Possum exam.",
+      "questions": [
+        {
+          "question": "Atoms are assigned a number, called an 'atomic number'. Which of the following gives an atom its atomic number?",
+          "answer": "Its number of protons"
+        },
+        {
+          "question": "Be careful! You'll get sick if you handle radioactive elements for too long. Which of the following elements is NOT radioactive, and safe to handle as much as you want?",
+          "answer": "Oxygen"
+        },
+        {
+          "question": "Boom! It's a nuclear explosion! Your friend Mack looks to you for help. What should you do next?",
+          "answer": "Duck and cover"
+        },
+        {
+          "question": "Critical mass is:",
+          "answer": "The minimum amount of material needed for a sustained nuclear chain reaction"
+        },
+        {
+          "question": "Elements have families, like you and me. Which of the following is NOT a family of elements on the periodic table?",
+          "answer": "The Roberts"
+        },
+        {
+          "question": "Francium was discovered in what country?",
+          "answer": "France"
+        },
+        {
+          "question": "In the theory of relativity, E=mc^2, what does the 'c' represent?",
+          "answer": "The speed of light"
+        },
+        {
+          "question": "Johnny is a is trying to make his own Fusion Core at home. What will he need to make one?",
+          "answer": "All of them above"
+        },
+        {
+          "question": "Little atoms are made up of a few essential parts. Which of the following is NOT part of an atom?",
+          "answer": "Assaultron"
+        },
+        {
+          "question": "Protons, neutrons, and electrons are all examples of what?",
+          "answer": "Subatomic particles"
+        },
+        {
+          "question": "Some materials (especially nuclear ones) can be unstable, and are dangerous to work with. Which of the following is an example of an unstable material?",
+          "answer": "Uranium"
+        },
+        {
+          "question": "The T-51b Power Armor uses what device as a power supply?",
+          "answer": "Fusion core"
+        },
+        {
+          "question": "The subatomic particle with the same mass as an electron but with a positive charge is known as what?",
+          "answer": "Positron"
+        },
+        {
+          "question": "The year is 2066. An ever-growing energy crisis is threatening to destabilize the United States. What device did our dashing scientists introduce as a potential solution?",
+          "answer": "The Fusion Cell"
+        },
+        {
+          "question": "Though tiny, atoms do have mass. Where is most of it found?",
+          "answer": "Its Nucleus"
+        },
+        {
+          "question": "Uranium oxide concentrate is also known as what?",
+          "answer": "Yellowcake"
+        },
+        {
+          "question": "What are some of the risks involved with atomic energy and nuclear power?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "What is the proper pronunciation of 'Nuclear'?",
+          "answer": "New-clee-er"
+        },
+        {
+          "question": "You may not think it, but the sun runs on a nuclear reaction, just like our cars and toys! Which nuclear reaction makes the sun shine?",
+          "answer": "Nuclear Fusion"
+        },
+        {
+          "question": "Your best friend Timmy leads you to a discovery he made out by the old swimming hole with barrels of nuclear waste! What should you do?",
+          "answer": "Leave immediately and find an adult"
+        }
+      ]
+    },
+    {
+      "name": "Archaeologist",
+      "label": "Archaeologist",
+      "value": "pos2",
+      "message": "Here are the possible questions and answers for the Archaeologist Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso took a trip to Europe and saw the ruins of Pompeii. He learned that a famous volcano erupted, and buried the city in ash. Which volcano?",
+          "answer": "Mt. Vesuvius"
+        },
+        {
+          "question": "Brendan went to a museum exhibit in Europe and saw a very famous rock. He says it was used to decipher ancient Egyptian hieroglyphics! What rock is he referring to?",
+          "answer": "The Rosetta Stone"
+        },
+        {
+          "question": "Hannah wants to hunt for lost tombs. She'll need to be careful of what kind of traps?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "Samuel is an archaeologist working at Chichen Itza. What ancient people would he be studying?",
+          "answer": "Mayans"
+        },
+        {
+          "question": "Some of our best finds come from tombs built by the ancient Egyptians. What are these tombs called?",
+          "answer": "Pyramids"
+        },
+        {
+          "question": "You're excavating an ancient Egyptian tomb and find a large stone box with a body inside! What do you call this box?",
+          "answer": "Sarcophagus"
+        },
+        {
+          "question": "You're helping dig through an ancient Egyptian tomb and find a large stone box. It probably contains a mummy, but what is the name of the large stone box itself?",
+          "answer": "Sarcophagus"
+        },
+        {
+          "question": "You've discovered an artifact during an excavation. Which of the following should NOT be recorded?",
+          "answer": "How good it tastes"
+        },
+        {
+          "question": "Archaeology does NOT include which of the following?",
+          "answer": "Gunfights"
+        },
+        {
+          "question": "Susie loves to explore ancient ruins. What should she do to protect a site she's working on?",
+          "answer": "Document and leave finds in place"
+        },
+        {
+          "question": "Which of these famous historical sites is in England?",
+          "answer": "Stonehenge"
+        },
+        {
+          "question": "You're exploring a cave and find an old, dusty skeleton! It's holding a book with the title 'The Histories' by a man named Herodotus. What is Herodotus known as?",
+          "answer": "The Father of History"
+        },
+        {
+          "question": "You're helping excavate a site in Egypt when you find an old, dusty book written by a Greek fellow named Herodotus. What was his nickname?",
+          "answer": "The Father of History"
+        },
+        {
+          "question": "You're working on a big dig with lots of artifacts to keep track of. What's a good way to catalog and keep track of them?",
+          "answer": "Number and log them"
+        },
+        {
+          "question": "Your professor wants you to take notes on a new find, but you don't know what kind of artifact it is yet! Which of the following would be a useful piece of information to include in your notes?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "You're excavating a dig site in Egypt and uncover an artifact shaped like a bug. What kind of insect is it shaped like that was sacred to ancient Egyptians?",
+          "answer": "Scarab"
+        },
+        {
+          "question": "You find an ancient, dusty scroll written in an ancient language. What do you call the study of ancient writing systems?",
+          "answer": "Epigraphy"
+        },
+        {
+          "question": "What is the name of the scientific study of human activity through the things they leave behind?",
+          "answer": "Archaeology"
+        },
+        {
+          "question": "What was the name of the first man-made satellite to orbit Earth?",
+          "answer": "Sputnik"
+        },
+        {
+          "question": "You're exploring a ruin when you find an old bronze statue. How can you figure out how old it is?",
+          "answer": "Carbon dating"
+        }
+      ]
+    },
+    {
+      "name": "Backpacker",
+      "label": "Backpacker",
+      "value": "pos3",
+      "message": "Here are the possible questions and answers for the Backpacker Possum exam.",
+      "questions": [
+        {
+          "question": "A backpacker is in the middle of a long journey and is starting to get a little stinky. What can they use to freshen up?",
+          "answer": "A stream and some soap"
+        },
+        {
+          "question": "Backpacking can be a great way to take in the great outdoors, but it can be a bit daunting for a new adventurer. What's one of the first things you should do to prepare for a backpacking trip?",
+          "answer": "Plan your route"
+        },
+        {
+          "question": "Hannah is packing for a backpacking trip. Which of these things should she leave behind?",
+          "answer": "Her television"
+        },
+        {
+          "question": "If you're going backpacking, you'll probably sleep in a tent. What's a good way to keep your tent safe from the elements?",
+          "answer": "Stake it down securely"
+        },
+        {
+          "question": "It's important to take care of the environment when you're backpacking. Which of these practices will help you Leave No Trace?",
+          "answer": "Pack out all trash"
+        },
+        {
+          "question": "Johnny is a backpacker and loves to take in the great outdoors! Unfortunately, he forgot his compass at home and has wandered off the trail. What can he use to help find his way?",
+          "answer": "The stars"
+        },
+        {
+          "question": "Samuel is out backpacking in the woods when he comes across a mama bear and her cub! What's the best course of action?",
+          "answer": "Back away slowly"
+        },
+        {
+          "question": "Susie is planning a big backpacking trip, and needs to bring something to help start a fire in the wild. Which of these would be a good choice?",
+          "answer": "Flint and steel"
+        },
+        {
+          "question": "What is the best way to stay warm while backpacking in the wilderness?",
+          "answer": "Layer your clothing"
+        },
+        {
+          "question": "When you're backpacking, you'll need some food to keep you going. Which of these foods would be a good choice for a long hike?",
+          "answer": "Dried fruit"
+        },
+        {
+          "question": "When you're out backpacking, it's important to stay hydrated! What's a good way to make sure your water is safe to drink?",
+          "answer": "Use a water filter"
+        },
+        {
+          "question": "Which of these animals is most likely to carry rabies, which could be a big problem for a backpacker?",
+          "answer": "Raccoon"
+        },
+        {
+          "question": "Which of these is a good way to find north without a compass while backpacking?",
+          "answer": "Look for the North Star"
+        },
+        {
+          "question": "While backpacking, Hannah finds a cool-looking rock she wants to keep as a souvenir. What's the best way to handle it?",
+          "answer": "Leave it where it is"
+        },
+        {
+          "question": "While backpacking, you find a beautiful meadow you'd like to camp in. What's one thing you should check for before setting up camp?",
+          "answer": "Widowmakers"
+        },
+        {
+          "question": "You find a nice, secluded spot to camp while backpacking. What's one thing you should do to make sure you're safe from wildlife?",
+          "answer": "Hang your food in a tree"
+        },
+        {
+          "question": "You're backpacking through the woods when you realize you're running low on water. What's a good source of water you might find nearby?",
+          "answer": "A clear stream"
+        },
+        {
+          "question": "You're going backpacking in the mountains! Which of these shoes would be the best choice for the trail?",
+          "answer": "Hiking boots"
+        },
+        {
+          "question": "You're planning a backpacking trip and need to pack light. Which of these items is probably NOT necessary?",
+          "answer": "A hairdryer"
+        },
+        {
+          "question": "You're setting up camp while backpacking and need to start a fire. What's one thing you should make sure to do?",
+          "answer": "Clear the area of debris"
+        }
+      ]
+    },
+    {
+      "name": "Chemist",
+      "label": "Chemist",
+      "value": "pos4",
+      "message": "Here are the possible questions and answers for the Chemist Possum exam.",
+      "questions": [
+        {
+          "question": "Franklin just splashed his eyes with an unknown chemical while working at his chemistry station. What should he do right away?",
+          "answer": "Find the nearest eye wash station and begin flushing his eyes for 15 minutes"
+        },
+        {
+          "question": "In a pinch, what two components can you use to create gunpowder?",
+          "answer": "Cloth and acid"
+        },
+        {
+          "question": "It's important to know the key components of important chems in the event of an emergency. Antiseptic, blood, and steel are all combined to make which chem?",
+          "answer": "Stimpak"
+        },
+        {
+          "question": "Richard is an amateur metalworker, and works with ore at his chemistry station, in addition to chemicals. Which chemical might Richard have that would be useful for working with ore?",
+          "answer": "Acid"
+        },
+        {
+          "question": "Safety first! While working in the lab, horseplay is...",
+          "answer": "Never acceptable"
+        },
+        {
+          "question": "Safety is of the utmost importance to a good chemist. When working at a chemistry station, make sure you always wear which of the following?",
+          "answer": "All of the above"
+        },
+        {
+          "question": "Some materials (especially nuclear ones) can be unstable, and are dangerous to work with. Which of the following is an example of an unstable material?",
+          "answer": "Uranium"
+        },
+        {
+          "question": "Wesley is about to start working with nuclear materials. He can take a chem to reduce the effects of radiation while he works. Which chem should he take before handling the materials?",
+          "answer": "Rad-X"
+        },
+        {
+          "question": "What are the only known side effects of Radaway, for instance?",
+          "answer": "Increased hunger and thirst"
+        },
+        {
+          "question": "You can't always expect to have the right amount chems at the right time. In the event of an emergency, Stimpaks, Radaway, and Rad-X can be diluted with what?",
+          "answer": "Purified water"
+        },
+        {
+          "question": "Your best friend, Chris, has been going to the gym a lot lately and has become addicted to Buffout. What can you give him to wean him off this horrible drug?",
+          "answer": "Addictol"
+        },
+        {
+          "question": "A chemist knows that alcohol is a solution! What does that mean?",
+          "answer": "It's a mixture where one substance is dissolved in another"
+        },
+        {
+          "question": "Chemicals can be hazardous, so you need to know how to handle them safely. What's one thing you should always do when working with chemicals?",
+          "answer": "Wear protective gear"
+        },
+        {
+          "question": "Hannah is working with some volatile chemicals and needs to cool them down to keep them stable. What's a good way to do that?",
+          "answer": "Use a cooling bath"
+        },
+        {
+          "question": "Samuel is mixing two chemicals together and smells a sharp, pungent odor. What should he do?",
+          "answer": "Ventilate the area immediately"
+        },
+        {
+          "question": "Susie is trying to identify a chemical compound. What's one way she can figure out what it is?",
+          "answer": "Use spectroscopy"
+        },
+        {
+          "question": "What is the primary source of energy for Earth's climate system?",
+          "answer": "The sun"
+        },
+        {
+          "question": "Which of these is a common chemical used to purify water?",
+          "answer": "Chlorine"
+        },
+        {
+          "question": "You need to mix a chemical solution, but you don't have a stir rod. What's a good alternative?",
+          "answer": "A clean glass rod"
+        },
+        {
+          "question": "You're working with a chemical that could cause burns. What's the first thing you should do if it gets on your skin?",
+          "answer": "Rinse with water for at least 15 minutes"
+        }
+      ]
+    },
+    {
+      "name": "Collector",
+      "label": "Collector",
+      "value": "pos5",
+      "message": "Here are the possible questions and answers for the Collector Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso collects miniature bobbleheads. What's a good way to display them?",
+          "answer": "On a shelf with good lighting"
+        },
+        {
+          "question": "Hannah is an avid stamp collector. What's one thing she should do to preserve her collection?",
+          "answer": "Store them in a dry, cool place"
+        },
+        {
+          "question": "If you're collecting rare books, what's one thing you should avoid doing to keep them in good condition?",
+          "answer": "Writing in them"
+        },
+        {
+          "question": "Johnny collects comic books. What's a good way to protect them from damage?",
+          "answer": "Use protective sleeves"
+        },
+        {
+          "question": "Samuel collects old coins. What's one thing he should avoid to keep them in good condition?",
+          "answer": "Cleaning them with harsh chemicals"
+        },
+        {
+          "question": "Susie is starting a collection of antique teacups. What's one thing she should check before buying one?",
+          "answer": "Check for cracks or chips"
+        },
+        {
+          "question": "What is a common way to organize a coin collection?",
+          "answer": "By year and mint mark"
+        },
+        {
+          "question": "You find a rare baseball card! What's one thing you should do to keep it safe?",
+          "answer": "Put it in a protective sleeve"
+        },
+        {
+          "question": "You're collecting vinyl records. What's one thing you should avoid to keep them in good condition?",
+          "answer": "Stacking them without sleeves"
+        },
+        {
+          "question": "You're starting a collection of vintage toys. What's one thing you should do to verify their authenticity?",
+          "answer": "Check for manufacturer markings"
+        },
+        {
+          "question": "Your friend wants to start collecting bottle caps. What's a good way to store them?",
+          "answer": "In a labeled container"
+        },
+        {
+          "question": "A collector needs to keep track of their items. What's a good way to do that?",
+          "answer": "Maintain a detailed inventory"
+        },
+        {
+          "question": "Hannah is collecting rare butterflies. What's one thing she should do to preserve them?",
+          "answer": "Mount them in a display case"
+        },
+        {
+          "question": "Samuel is collecting old maps. What's one thing he should avoid doing to them?",
+          "answer": "Folding them"
+        },
+        {
+          "question": "Susie is collecting antique jewelry. What's one thing she should do to clean it safely?",
+          "answer": "Use a soft cloth and mild soap"
+        },
+        {
+          "question": "What is one reason collectors might focus on a specific type of item, like stamps or coins?",
+          "answer": "To build a complete set"
+        },
+        {
+          "question": "You're collecting old postcards. What's one thing you should do to protect them?",
+          "answer": "Store them in acid-free sleeves"
+        },
+        {
+          "question": "You're showing off your collection at a show. What's one thing you should do to keep it safe?",
+          "answer": "Keep it in a locked display case"
+        },
+        {
+          "question": "Your collection of rare coins is getting big! What's a good way to insure it against loss or damage?",
+          "answer": "Get a specialized insurance policy"
+        },
+        {
+          "question": "You're trading a collectible with another collector. What's one thing you should do to make sure it's a fair trade?",
+          "answer": "Research its market value"
+        }
+      ]
+    },
+    {
+      "name": "Electrician",
+      "label": "Electrician",
+      "value": "pos6",
+      "message": "Here are the possible questions and answers for the Electrician Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is fixing a circuit breaker. What's the first thing he should do?",
+          "answer": "Turn off the main power"
+        },
+        {
+          "question": "Hannah is installing a new outlet. What's one thing she should check before starting?",
+          "answer": "Ensure the power is off"
+        },
+        {
+          "question": "If you're working with electrical wiring, what's one thing you should always wear?",
+          "answer": "Insulated gloves"
+        },
+        {
+          "question": "Johnny is testing a circuit. What's a tool he can use to check for voltage?",
+          "answer": "Multimeter"
+        },
+        {
+          "question": "Samuel is wiring a new light fixture. What's one thing he should make sure of?",
+          "answer": "The wires are properly connected"
+        },
+        {
+          "question": "Susie is troubleshooting a circuit that keeps tripping. What's one possible cause?",
+          "answer": "Overloaded circuit"
+        },
+        {
+          "question": "What is the purpose of a circuit breaker?",
+          "answer": "To protect circuits from overload"
+        },
+        {
+          "question": "What material is commonly used as a conductor in electrical wiring?",
+          "answer": "Copper"
+        },
+        {
+          "question": "You're installing a new generator. What's one thing you should ensure?",
+          "answer": "Proper grounding"
+        },
+        {
+          "question": "You're working on a live wire and get a shock. What's the first thing you should do?",
+          "answer": "Turn off the power source"
+        },
+        {
+          "question": "A light fixture isn't working. What's one thing you should check first?",
+          "answer": "The bulb"
+        },
+        {
+          "question": "Hannah is setting up a generator at her camp. What's one safety feature it should have?",
+          "answer": "A ground fault circuit interrupter"
+        },
+        {
+          "question": "Johnny is repairing a power line. What's one thing he should avoid doing?",
+          "answer": "Working in wet conditions"
+        },
+        {
+          "question": "Samuel is installing a new switch. What's one thing he should do to ensure safety?",
+          "answer": "Use a non-conductive screwdriver"
+        },
+        {
+          "question": "Susie is checking a fuse box. What's one sign that a fuse is blown?",
+          "answer": "A dark burn mark"
+        },
+        {
+          "question": "What is the unit used to measure electrical resistance?",
+          "answer": "Ohm"
+        },
+        {
+          "question": "You're building a circuit and need to control the flow of electricity. What component can you use?",
+          "answer": "Resistor"
+        },
+        {
+          "question": "You're setting up a power connector. What's one thing you should avoid?",
+          "answer": "Using damaged wires"
+        },
+        {
+          "question": "Your camp's generator isn't producing power. What's one thing you should check?",
+          "answer": "Fuel level"
+        },
+        {
+          "question": "You're wiring a new device. What's one thing you should do to prevent a fire hazard?",
+          "answer": "Use the correct wire gauge"
+        }
+      ]
+    },
+    {
+      "name": "Gardener",
+      "label": "Gardener",
+      "value": "pos7",
+      "message": "Here are the possible questions and answers for the Gardener Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is planting a garden. What's one thing he should do to prepare the soil?",
+          "answer": "Test the soil pH"
+        },
+        {
+          "question": "Hannah is growing tomatoes. What's one thing she should do to keep them healthy?",
+          "answer": "Water them regularly"
+        },
+        {
+          "question": "If your plants are wilting, what's one possible cause?",
+          "answer": "Underwatering"
+        },
+        {
+          "question": "Johnny is starting a garden and wants to grow carrots. What's one thing he should ensure?",
+          "answer": "Loose, well-drained soil"
+        },
+        {
+          "question": "Samuel is planting mutfruit. What's one thing he should avoid?",
+          "answer": "Planting in heavy shade"
+        },
+        {
+          "question": "Susie is growing corn. What's one pest she should watch out for?",
+          "answer": "Corn earworm"
+        },
+        {
+          "question": "What is one benefit of composting in a garden?",
+          "answer": "Improves soil fertility"
+        },
+        {
+          "question": "What is the process by which plants make their own food using sunlight?",
+          "answer": "Photosynthesis"
+        },
+        {
+          "question": "You're growing blackberries. What's one thing you should do to support the plants?",
+          "answer": "Use a trellis"
+        },
+        {
+          "question": "You're planting a garden in Appalachia. Which of these crops is native to the region?",
+          "answer": "Razorgrain"
+        },
+        {
+          "question": "Alfonso's plants are being eaten by bugs. What's one natural way to control pests?",
+          "answer": "Introduce ladybugs"
+        },
+        {
+          "question": "Hannah wants to grow gourds. What's one thing she should ensure?",
+          "answer": "Plenty of space for vines"
+        },
+        {
+          "question": "Johnny is pruning his plants. What's one reason to prune?",
+          "answer": "Encourage healthy growth"
+        },
+        {
+          "question": "Samuel is growing tatos. What's one thing he should do to prevent disease?",
+          "answer": "Rotate crops yearly"
+        },
+        {
+          "question": "Susie is starting a garden. What's one tool she should have?",
+          "answer": "A trowel"
+        },
+        {
+          "question": "What is one way to improve soil drainage in a garden?",
+          "answer": "Add organic matter"
+        },
+        {
+          "question": "You're growing melons. What's one thing you should do to protect the fruit?",
+          "answer": "Place them on a bed of straw"
+        },
+        {
+          "question": "You're planting a garden and want to attract pollinators. Which of these would help?",
+          "answer": "Planting flowers"
+        },
+        {
+          "question": "Your plants are yellowing. What's one possible cause?",
+          "answer": "Nutrient deficiency"
+        },
+        {
+          "question": "You're starting a garden in a dry area. What's one crop that can tolerate drought?",
+          "answer": "Razorgrain"
+        }
+      ]
+    },
+    {
+      "name": "Leatherworker",
+      "label": "Leatherworker",
+      "value": "pos8",
+      "message": "Here are the possible questions and answers for the Leatherworker Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is making a leather belt. What's one tool he needs to punch holes for the buckle?",
+          "answer": "Leather punch"
+        },
+        {
+          "question": "Hannah is stitching leather. What's one type of stitch she might use?",
+          "answer": "Saddle stitch"
+        },
+        {
+          "question": "If you're tanning leather, what's one chemical you might use?",
+          "answer": "Tannin"
+        },
+        {
+          "question": "Johnny is making a leather wallet. What's one thing he should do to prepare the leather?",
+          "answer": "Cut it to size"
+        },
+        {
+          "question": "Samuel is working with leather. What's one thing he should do to keep it from drying out?",
+          "answer": "Apply leather conditioner"
+        },
+        {
+          "question": "Susie is making a leather bag. What's one thing she should check before stitching?",
+          "answer": "The leather's thickness"
+        },
+        {
+          "question": "What is one animal hide commonly used for leatherworking?",
+          "answer": "Cowhide"
+        },
+        {
+          "question": "What is the process of softening leather called?",
+          "answer": "Tanning"
+        },
+        {
+          "question": "You're making a leather sheath. What's one thing you should do to ensure a good fit?",
+          "answer": "Measure the blade"
+        },
+        {
+          "question": "You're stitching leather. What's one material you might use for thread?",
+          "answer": "Waxed thread"
+        },
+        {
+          "question": "Alfonso is dyeing leather. What's one thing he should do to ensure even color?",
+          "answer": "Apply dye evenly"
+        },
+        {
+          "question": "Hannah is making leather armor. What's one thing she should consider for durability?",
+          "answer": "Use thick leather"
+        },
+        {
+          "question": "Johnny is cutting leather. What's one tool he should use for clean edges?",
+          "answer": "Rotary cutter"
+        },
+        {
+          "question": "Samuel is embossing leather. What's one thing he needs to do first?",
+          "answer": "Dampen the leather"
+        },
+        {
+          "question": "Susie is making a leather belt. What's one way to finish the edges?",
+          "answer": "Burnish them"
+        },
+        {
+          "question": "What is one way to clean leather without damaging it?",
+          "answer": "Use a damp cloth"
+        },
+        {
+          "question": "You're making a leather holster. What's one thing you should do to shape it?",
+          "answer": "Wet mold it"
+        },
+        {
+          "question": "You're repairing a leather item. What's one thing you should do to patch a hole?",
+          "answer": "Use a leather patch"
+        },
+        {
+          "question": "Your leather project is complete. What's one way to protect it?",
+          "answer": "Apply a sealant"
+        },
+        {
+          "question": "You're working with leather and need to join two pieces. What's one method you can use?",
+          "answer": "Sewing"
+        }
+      ]
+    },
+    {
+      "name": "Metalworker",
+      "label": "Metalworker",
+      "value": "pos9",
+      "message": "Here are the possible questions and answers for the Metalworker Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is forging a metal sword. What's one thing he needs to heat the metal?",
+          "answer": "A forge"
+        },
+        {
+          "question": "Hannah is welding two pieces of metal together. What's one safety item she should wear?",
+          "answer": "Welding helmet"
+        },
+        {
+          "question": "If you're working with molten metal, what's one thing you should avoid?",
+          "answer": "Wearing synthetic clothing"
+        },
+        {
+          "question": "Johnny is shaping metal. What's one tool he might use to bend it?",
+          "answer": "A hammer"
+        },
+        {
+          "question": "Samuel is making a metal tool. What's one thing he should do to harden the metal?",
+          "answer": "Quench it"
+        },
+        {
+          "question": "Susie is polishing a metal surface. What's one material she might use?",
+          "answer": "Sandpaper"
+        },
+        {
+          "question": "What is one common metal used in jewelry making?",
+          "answer": "Silver"
+        },
+        {
+          "question": "What is the process of joining metal pieces by heating them called?",
+          "answer": "Welding"
+        },
+        {
+          "question": "You're casting a metal object. What's one thing you need to create the mold?",
+          "answer": "Sand"
+        },
+        {
+          "question": "You're cutting a metal sheet. What's one tool you can use for precision?",
+          "answer": "Plasma cutter"
+        },
+        {
+          "question": "Alfonso is making a metal armor piece. What's one thing he should do to prevent rust?",
+          "answer": "Apply a protective coating"
+        },
+        {
+          "question": "Hannah is working with aluminum. What's one property of this metal?",
+          "answer": "Lightweight"
+        },
+        {
+          "question": "Johnny is forging a blade. What's one thing he should do to ensure a sharp edge?",
+          "answer": "Grind it carefully"
+        },
+        {
+          "question": "Samuel is soldering two metal pieces. What's one material he needs?",
+          "answer": "Solder"
+        },
+        {
+          "question": "Susie is making a metal sculpture. What's one way to add texture?",
+          "answer": "Hammer it"
+        },
+        {
+          "question": "What is one way to test the hardness of a metal?",
+          "answer": "Use a hardness tester"
+        },
+        {
+          "question": "You're annealing metal. What is the purpose of this process?",
+          "answer": "To soften it"
+        },
+        {
+          "question": "You're working with steel. What's one alloying element in it?",
+          "answer": "Carbon"
+        },
+        {
+          "question": "Your metal project is complete. What's one way to protect it from corrosion?",
+          "answer": "Paint it"
+        },
+        {
+          "question": "You're shaping a metal pipe. What's one tool you might use?",
+          "answer": "Pipe bender"
+        }
+      ]
+    },
+    {
+      "name": "Miner",
+      "label": "Miner",
+      "value": "pos10",
+      "message": "Here are the possible questions and answers for the Miner Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is working in a coal mine. What's one safety item he should always wear?",
+          "answer": "A hard hat"
+        },
+        {
+          "question": "Hannah is mining for copper. What's one tool she might use to extract it?",
+          "answer": "A pickaxe"
+        },
+        {
+          "question": "If you're working in a mine, what's one hazard you should watch out for?",
+          "answer": "Cave-ins"
+        },
+        {
+          "question": "Johnny is mining for gold. What's one way to separate gold from other materials?",
+          "answer": "Panning"
+        },
+        {
+          "question": "Samuel is working in a mine and notices a strange gas smell. What should he do?",
+          "answer": "Evacuate immediately"
+        },
+        {
+          "question": "Susie is studying minerals. What's one property used to identify them?",
+          "answer": "Hardness"
+        },
+        {
+          "question": "What is one common mineral used in making glass?",
+          "answer": "Quartz"
+        },
+        {
+          "question": "What is the process of extracting ore from the ground called?",
+          "answer": "Mining"
+        },
+        {
+          "question": "You're mining in a deep shaft. What's one thing you should have for light?",
+          "answer": "A headlamp"
+        },
+        {
+          "question": "You're working in a mine and find a shiny mineral. What's one way to test if it's gold?",
+          "answer": "Check its density"
+        },
+        {
+          "question": "Alfonso is blasting in a mine. What's one safety precaution he should take?",
+          "answer": "Clear the area"
+        },
+        {
+          "question": "Hannah is studying a mineral sample. What's one tool she can use to check its streak?",
+          "answer": "A streak plate"
+        },
+        {
+          "question": "Johnny is mining coal. What's one thing he should do to prevent black lung?",
+          "answer": "Wear a respirator"
+        },
+        {
+          "question": "Samuel is working in a mine. What's one piece of equipment that can help him breathe?",
+          "answer": "A ventilator"
+        },
+        {
+          "question": "Susie is identifying a mineral. What's one property that can help her?",
+          "answer": "Crystal shape"
+        },
+        {
+          "question": "What is one gas that can be dangerous in mines?",
+          "answer": "Methane"
+        },
+        {
+          "question": "You're mining for iron ore. What's one thing you need to process it?",
+          "answer": "A smelter"
+        },
+        {
+          "question": "You're working in a mine and hear a loud rumbling. What's the first thing you should do?",
+          "answer": "Find the nearest exit"
+        },
+        {
+          "question": "Your mining team finds a vein of uranium. What's one thing you should do to stay safe?",
+          "answer": "Wear protective gear"
+        },
+        {
+          "question": "You're studying a mineral deposit. What's one way to estimate its size?",
+          "answer": "Core sampling"
+        }
+      ]
+    },
+    {
+      "name": "Musician",
+      "label": "Musician",
+      "value": "pos11",
+      "message": "Here are the possible questions and answers for the Musician Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is playing a violin. What's one part of the violin he uses to play it?",
+          "answer": "Bow"
+        },
+        {
+          "question": "Hannah is learning to play the piano. What's one thing she needs to read music?",
+          "answer": "Sheet music"
+        },
+        {
+          "question": "If you're playing a brass instrument, what's one thing you need to do to produce sound?",
+          "answer": "Buzz your lips"
+        },
+        {
+          "question": "Johnny is tuning his guitar. What's one thing he should check?",
+          "answer": "String tension"
+        },
+        {
+          "question": "Samuel is playing a drum. What's one tool he might use to keep rhythm?",
+          "answer": "Metronome"
+        },
+        {
+          "question": "Susie is learning to play the flute. What's one thing she needs to do to play a note?",
+          "answer": "Blow air across the opening"
+        },
+        {
+          "question": "What is one instrument in the woodwind family?",
+          "answer": "Clarinet"
+        },
+        {
+          "question": "What is the term for the speed of music?",
+          "answer": "Tempo"
+        },
+        {
+          "question": "You're playing a trumpet. What's one thing you should do to maintain it?",
+          "answer": "Clean the valves"
+        },
+        {
+          "question": "You're starting a band. What's one thing you need to write a song?",
+          "answer": "Lyrics"
+        },
+        {
+          "question": "Alfonso is composing music. What's one thing he should consider for harmony?",
+          "answer": "Chords"
+        },
+        {
+          "question": "Hannah is playing a saxophone. What's one part she needs to produce sound?",
+          "answer": "Reed"
+        },
+        {
+          "question": "Johnny is practicing a musical scale. What's one benefit of practicing scales?",
+          "answer": "Improves finger dexterity"
+        },
+        {
+          "question": "Samuel is playing a banjo. What's one thing he should do to keep it in tune?",
+          "answer": "Adjust the tuning pegs"
+        },
+        {
+          "question": "Susie is learning a new piece of music. What's one thing she should do to improve?",
+          "answer": "Practice daily"
+        },
+        {
+          "question": "What is one way to record music in a studio?",
+          "answer": "Use a microphone"
+        },
+        {
+          "question": "You're playing in an orchestra. What's one person who leads it?",
+          "answer": "Conductor"
+        },
+        {
+          "question": "You're performing a duet. What's one thing you need to do with your partner?",
+          "answer": "Coordinate timing"
+        },
+        {
+          "question": "Your band is setting up for a show. What's one thing you should check?",
+          "answer": "Sound levels"
+        },
+        {
+          "question": "You're writing a song. What's one thing you can use to create rhythm?",
+          "answer": "Drum beat"
+        }
+      ]
+    },
+    {
+      "name": "Photographer",
+      "label": "Photographer",
+      "value": "pos12",
+      "message": "Here are the possible questions and answers for the Photographer Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is taking a photo. What's one thing he should adjust for better lighting?",
+          "answer": "Exposure"
+        },
+        {
+          "question": "Hannah is photographing a landscape. What's one thing she should consider for composition?",
+          "answer": "Rule of thirds"
+        },
+        {
+          "question": "If you're taking a photo in low light, what's one thing you can do to get a clear image?",
+          "answer": "Use a tripod"
+        },
+        {
+          "question": "Johnny is photographing wildlife. What's one thing he should do to avoid disturbing the animals?",
+          "answer": "Use a telephoto lens"
+        },
+        {
+          "question": "Samuel is taking a portrait. What's one thing he should do to make the subject stand out?",
+          "answer": "Blur the background"
+        },
+        {
+          "question": "Susie is editing a photo. What's one thing she can adjust to improve color?",
+          "answer": "White balance"
+        },
+        {
+          "question": "What is one device used to take photographs?",
+          "answer": "Camera"
+        },
+        {
+          "question": "What is the term for the opening in a camera that controls light?",
+          "answer": "Aperture"
+        },
+        {
+          "question": "You're photographing a fast-moving object. What's one thing you should adjust?",
+          "answer": "Shutter speed"
+        },
+        {
+          "question": "You're taking a photo at night. What's one thing you can use to add light?",
+          "answer": "Flash"
+        },
+        {
+          "question": "Alfonso is photographing a group. What's one thing he should do to ensure everyone is in focus?",
+          "answer": "Use a smaller aperture"
+        },
+        {
+          "question": "Hannah is taking a macro photo. What's one thing she needs for close-up detail?",
+          "answer": "Macro lens"
+        },
+        {
+          "question": "Johnny is photographing a sunset. What's one thing he should avoid?",
+          "answer": "Overexposure"
+        },
+        {
+          "question": "Samuel is setting up a studio shoot. What's one thing he should use for soft lighting?",
+          "answer": "Diffuser"
+        },
+        {
+          "question": "Susie is photographing a moving subject. What's one technique she can use to show motion?",
+          "answer": "Panning"
+        },
+        {
+          "question": "What is one way to stabilize a camera while shooting?",
+          "answer": "Use a tripod"
+        },
+        {
+          "question": "You're developing film. What's one chemical you might use?",
+          "answer": "Developer"
+        },
+        {
+          "question": "You're photographing a building. What's one thing you should do to avoid distortion?",
+          "answer": "Use a wide-angle lens"
+        },
+        {
+          "question": "Your camera's photos are blurry. What's one possible cause?",
+          "answer": "Slow shutter speed"
+        },
+        {
+          "question": "You're taking a photo in bright sunlight. What's one thing you can use to reduce glare?",
+          "answer": "Lens hood"
+        }
+      ]
+    },
+    {
+      "name": "Rail Enthusiast",
+      "label": "Rail Enthusiast",
+      "value": "pos13",
+      "message": "Here are the possible questions and answers for the Rail Enthusiast Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is studying trains. What's one part of a steam locomotive that generates power?",
+          "answer": "Boiler"
+        },
+        {
+          "question": "Hannah is riding a train. What's one thing the conductor does?",
+          "answer": "Checks tickets"
+        },
+        {
+          "question": "If you're building a model train, what's one thing you need for the tracks?",
+          "answer": "Rails"
+        },
+        {
+          "question": "Johnny is learning about train signals. What's one color that means 'stop'?",
+          "answer": "Red"
+        },
+        {
+          "question": "Samuel is studying train history. What was the first commercially successful steam locomotive?",
+          "answer": "The Rocket"
+        },
+        {
+          "question": "Susie is visiting a train museum. What's one type of train she might see?",
+          "answer": "Steam locomotive"
+        },
+        {
+          "question": "What is one fuel used in early locomotives?",
+          "answer": "Coal"
+        },
+        {
+          "question": "What is the term for the person who drives a train?",
+          "answer": "Engineer"
+        },
+        {
+          "question": "You're building a model train set. What's one thing you should do to ensure smooth operation?",
+          "answer": "Clean the tracks"
+        },
+        {
+          "question": "You're riding a train and hear a whistle. What's one reason the engineer might blow it?",
+          "answer": "To signal a crossing"
+        },
+        {
+          "question": "Alfonso is studying train tracks. What's one material used to make them?",
+          "answer": "Steel"
+        },
+        {
+          "question": "Hannah is learning about train brakes. What's one type used on trains?",
+          "answer": "Air brakes"
+        },
+        {
+          "question": "Johnny is visiting a train yard. What's one safety rule he should follow?",
+          "answer": "Stay off the tracks"
+        },
+        {
+          "question": "Samuel is studying train routes. What's one thing that determines a train's path?",
+          "answer": "Track switches"
+        },
+        {
+          "question": "Susie is building a train diorama. What's one thing she can add for realism?",
+          "answer": "Scenery"
+        },
+        {
+          "question": "What is one way trains transport goods?",
+          "answer": "Freight cars"
+        },
+        {
+          "question": "You're studying train history. What was one major benefit of trains in the 19th century?",
+          "answer": "Faster transportation"
+        },
+        {
+          "question": "You're watching a train go by. What's one part that connects train cars?",
+          "answer": "Coupler"
+        },
+        {
+          "question": "Your model train isn't moving. What's one thing you should check?",
+          "answer": "Power supply"
+        },
+        {
+          "question": "You're learning about train gauges. What's one standard gauge size?",
+          "answer": "4 feet 8.5 inches"
+        }
+      ]
+    },
+    {
+      "name": "Roboticist",
+      "label": "Roboticist",
+      "value": "pos14",
+      "message": "Here are the possible questions and answers for the Roboticist Possum exam.",
+      "questions": [
+        {
+          "question": "Alfonso is building a robot. What's one component he needs for movement?",
+          "answer": "Motor"
+        },
+        {
+          "question": "Hannah is programming a robot. What's one language she might use?",
+          "answer": "Python"
+        },
+        {
+          "question": "If you're designing a robot, what's one thing you need to consider for safety?",
+          "answer": "Emergency stop"
+        },
+        {
+          "question": "Johnny is repairing a Mr. Handy. What's one tool he might need?",
+          "answer": "Screwdriver"
+        },
+        {
+          "question": "Samuel is building a robot arm. What's one thing he needs for precise movement?",
+          "answer": "Servo"
+        },
+        {
+          "question": "Susie is testing a robot. What's one thing she should do to ensure it works?",
+          "answer": "Run a diagnostic test"
+        },
+        {
+          "question": "What is one power source for a robot?",
+          "answer": "Battery"
+        },
+        {
+          "question": "What is the term for a robot's ability to make decisions?",
+          "answer": "Artificial intelligence"
+        },
+        {
+          "question": "You're building a robot and need it to detect obstacles. What's one component you can use?",
+          "answer": "Ultrasonic sensor"
+        },
+        {
+          "question": "You're programming a robot to follow a line. What's one sensor you might use?",
+          "answer": "Infrared sensor"
+        },
+        {
+          "question": "Alfonso is designing a robot for a factory. What's one task it might perform?",
+          "answer": "Assembly"
+        },
+        {
+          "question": "Hannah is working on a robot's vision system. What's one component she might use?",
+          "answer": "Camera"
+        },
+        {
+          "question": "Johnny is building a combat robot. What's one thing he should include for durability?",
+          "answer": "Reinforced frame"
+        },
+        {
+          "question": "Samuel is programming a robot to speak. What's one thing he needs?",
+          "answer": "Speaker"
+        },
+        {
+          "question": "Susie is designing a robot for exploration. What's one feature it should have?",
+          "answer": "All-terrain wheels"
+        },
+        {
+          "question": "What is one way to control a robot remotely?",
+          "answer": "Radio signals"
+        },
+        {
+          "question": "You're building a robot and want it to avoid walls. What's one algorithm you can use?",
+          "answer": "Wall-following"
+        },
+        {
+          "question": "You're repairing a robot's circuit board. What's one thing you should check?",
+          "answer": "Solder joints"
+        },
+        {
+          "question": "Your robot isn't responding. What's one thing you should check first?",
+          "answer": "Power connection"
+        },
+        {
+          "question": "You're designing a robot for a competition. What's one thing you should optimize?",
+          "answer": "Weight"
+        }
+      ]
+    }
+  ]
+}

@@ -18,12 +18,10 @@ module.exports = {
       { name: 'pause', description: 'Pause music' },
       { name: 'resume', description: 'Resume music' },
       { name: 'meme', description: 'Get a meme' },
-      { name: 'quote', description: 'Get a quote' },
       { name: 'skip', description: 'Skip current song' },
       { name: 'stop', description: 'Stop music and leave' },
       { name: 'queue', description: 'View music queue' },
       { name: 'play', description: 'Play a song or playlist from YouTube, Spotify, or SoundCloud' },
-      { name: 'seek', description: 'Seek to a timestamp in the current song' },
       { name: 'ping', description: 'Check bot latency' },
       { name: 'poll', description: 'Create a poll' },
       { name: 'coinflip', description: 'Flip a coin' },
@@ -43,12 +41,23 @@ module.exports = {
       { name: 'lyrics', description: 'Fetch lyrics for a song' },
       { name: 'history', description: 'View recently played songs' },
     ];
-    const embed = new EmbedBuilder()
-      .setTitle('📜 Nexus Command List')
-      .setDescription('Here are all available commands:')
-      .addFields(commands.map(cmd => ({ name: `/${cmd.name}`, value: cmd.description, inline: true })))
-      .setColor(0x3498db)
-      .setTimestamp();
-    await interaction.reply({ embeds: [embed], flags: 64 });
+
+    // Split commands into chunks of 25 to respect embed field limit
+    const chunks = [];
+    for (let i = 0; i < commands.length; i += 25) {
+      chunks.push(commands.slice(i, i + 25));
+    }
+
+    // Create and send embeds
+    const embeds = chunks.map((chunk, index) => {
+      return new EmbedBuilder()
+        .setTitle(`📜 Nexus Command List ${index > 0 ? ` (Part ${index + 1})` : ''}`)
+        .setDescription('Here are the available commands:')
+        .addFields(chunk.map(cmd => ({ name: `/${cmd.name}`, value: cmd.description, inline: true })))
+        .setColor(0x3498db)
+        .setTimestamp();
+    });
+
+    await interaction.reply({ embeds: embeds.length > 1 ? embeds : embeds[0], ephemeral: true });
   },
 };

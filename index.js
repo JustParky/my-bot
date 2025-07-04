@@ -1,10 +1,12 @@
+/* eslint-disable no-console, no-unused-vars */
 require('dotenv').config();
 const { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, ActivityType } = require('discord.js');
-const { createAudioPlayer, AudioPlayerStatus, createAudioResource, StreamType } = require('@discordjs/voice');
+const { createAudioPlayer, AudioPlayerStatus } = require('@discordjs/voice');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const Genius = require('genius-lyrics');
+const { playNext } = require('./playnext');
 const { ServerQueue, splitMessage, firstResultOrFail, validateYouTubeURL, extractYouTubeID, getOrJoinVoiceChannel, getStream } = require('./utils');
 
 // Environment variable validation
@@ -18,7 +20,7 @@ const isWindows = process.platform === 'win32';
 const audioDir = isWindows ? path.join(__dirname, 'audio') : '/home/container/audio';
 const RADIO_STATIONS = fs.existsSync(audioDir)
   ? fs.readdirSync(audioDir)
-      .filter(f => f.endsWith('.mp3') || f.endsWith('.wav'))
+      .filter((f) => f.endsWith('.mp3') || f.endsWith('.wav'))
       .reduce((acc, file) => ({
         ...acc,
         [file.split('.')[0].toLowerCase()]: path.join(audioDir, file),
@@ -26,6 +28,17 @@ const RADIO_STATIONS = fs.existsSync(audioDir)
   : {};
 console.log(`Audio directory: ${audioDir}, Files: ${Object.keys(RADIO_STATIONS).join(', ') || 'none'}`);
 
+// Funny idle activities
+const funnyActivities = [
+  'Having a cheeky one 🍺',
+  'Hacking Enclave terminals 💻',
+  'Waiting for a song 🎤',
+  'Eating Dominos Pizza 🍕',
+  'Searching for bottlecaps 💰',
+  'Avoiding Super Mutants 🧟',
+  'Tuning my radio waves 📻',
+  'Data mining for goodies ⛏️'
+];
 
 // Spotify token refresh mechanism
 async function refreshSpotifyToken() {
@@ -51,8 +64,8 @@ async function refreshSpotifyToken() {
     return false;
   }
 }
-refreshSpotifyToken(); // Initial refresh
-setInterval(refreshSpotifyToken, 30 * 60 * 1000); // Refresh every 30 minutes
+refreshSpotifyToken();
+setInterval(refreshSpotifyToken, 30 * 60 * 1000);
 
 // Client setup
 const client = new Client({
@@ -65,39 +78,128 @@ const client = new Client({
   ],
 });
 
-const player = createAudioPlayer();
-const queues = new Map();
-const apiCache = new Map(); // In-memory cache for Xbox API responses
-const history = new Map(); // Song history per guild
-const genius = process.env.GENIUS_API_KEY ? new Genius.Client(process.env.GENIUS_API_KEY) : null;
-
-// Reusable music control components
-const musicControlsRow1 = new ActionRowBuilder().addComponents(
-  new ButtonBuilder().setCustomId('vol_down').setLabel('🔉 -25%').setStyle(ButtonStyle.Primary),
-  new ButtonBuilder().setCustomId('pause').setLabel('⏯ Play/Pause').setStyle(ButtonStyle.Primary),
-  new ButtonBuilder().setCustomId('vol_up').setLabel('🔊 +25%').setStyle(ButtonStyle.Primary)
+// Attach music controls and funny activities to client for access in playNext
+client.funnyActivities = funnyActivities;
+client.musicControlsRow1 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('shuffle').setLabel('🔀').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('previous').setLabel('⏮').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('pause').setLabel('⏯').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('skip').setLabel('⏭').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('loop').setLabel('🔁').setStyle(ButtonStyle.Secondary),
 );
-
-const musicControlsRow2 = new ActionRowBuilder().addComponents(
-  new ButtonBuilder().setCustomId('skip').setLabel('⏭ Skip').setStyle(ButtonStyle.Secondary),
-  new ButtonBuilder().setCustomId('shuffle').setLabel('⇄ Shuffle').setStyle(ButtonStyle.Secondary),
-  new ButtonBuilder().setCustomId('loop').setLabel('⟲ Loop').setStyle(ButtonStyle.Secondary)
+client.musicControlsRow2 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('mute').setLabel('🔇').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('vol_down').setLabel('🔉').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('stop').setLabel('⏹️').setStyle(ButtonStyle.Danger),
+  new ButtonBuilder().setCustomId('vol_up').setLabel('🔊').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('grab').setLabel('✉️').setStyle(ButtonStyle.Secondary),
 );
-
-const musicControlsRow3 = new ActionRowBuilder().addComponents(
-  new ButtonBuilder().setCustomId('stop').setLabel('⏹ Stop').setStyle(ButtonStyle.Danger),
-  new ButtonBuilder().setCustomId('clear_queue').setLabel('❌ Clear').setStyle(ButtonStyle.Danger),
-  new ButtonBuilder().setCustomId('vote_skip').setLabel('🗳️ Skip').setStyle(ButtonStyle.Success),
-  new ButtonBuilder().setCustomId('queue').setLabel('⏳ Queue').setStyle(ButtonStyle.Secondary)
+client.musicControlsRow3 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('clear_queue').setLabel('🗑️ Clear').setStyle(ButtonStyle.Secondary),
+  new ButtonBuilder().setCustomId('vote_skip').setLabel('🗳️ Skip!').setStyle(ButtonStyle.Success),
+  new ButtonBuilder().setCustomId('queue').setLabel('📜 Queue').setStyle(ButtonStyle.Secondary),
 );
-
-const pollButtons = new ActionRowBuilder().addComponents(
-  new ButtonBuilder().setCustomId('yes').setLabel('Yes').setStyle(ButtonStyle.Success),
-  new ButtonBuilder().setCustomId('no').setLabel('No').setStyle(ButtonStyle.Danger),
+client.disabledMusicControlsRow1 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('shuffle').setLabel('🔀').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('previous').setLabel('⏮').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('pause').setLabel('⏯').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('skip').setLabel('⏭').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('loop').setLabel('🔁').setStyle(ButtonStyle.Secondary).setDisabled(true),
 );
-const historyButtons = new ActionRowBuilder().addComponents(
+client.disabledMusicControlsRow2 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('mute').setLabel('🔇').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('vol_down').setLabel('🔉').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('stop').setLabel('⏹️').setStyle(ButtonStyle.Danger).setDisabled(true),
+  new ButtonBuilder().setCustomId('vol_up').setLabel('🔊').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('grab').setLabel('✉️').setStyle(ButtonStyle.Secondary).setDisabled(true),
+);
+client.disabledMusicControlsRow3 = new ActionRowBuilder().addComponents(
+  new ButtonBuilder().setCustomId('clear_queue').setLabel('🗑️ Clear').setStyle(ButtonStyle.Secondary).setDisabled(true),
+  new ButtonBuilder().setCustomId('vote_skip').setLabel('🗳️ Skip!').setStyle(ButtonStyle.Success).setDisabled(true),
+  new ButtonBuilder().setCustomId('queue').setLabel('📜 Queue').setStyle(ButtonStyle.Secondary).setDisabled(true),
+);
+client.historyButtons = new ActionRowBuilder().addComponents(
   new ButtonBuilder().setCustomId('replay').setLabel('▶️ Replay').setStyle(ButtonStyle.Primary),
 );
+
+const player = createAudioPlayer();
+const queues = new Map();
+const apiCache = new Map();
+const history = new Map();
+const genius = process.env.GENIUS_API_KEY ? new Genius.Client(process.env.GENIUS_API_KEY) : null;
+const handledInteractions = new Set();
+
+// AudioPlayer event handlers
+player.on('error', async (error) => {
+  console.error(`AudioPlayer error for guild ${queues.keys().next().value}: ${error.message}`);
+  const guildId = [...queues.keys()].find(gid => queues.get(gid).connection?.state?.subscription?.player === player);
+  if (guildId) {
+    const serverQueue = queues.get(guildId);
+    try {
+      await serverQueue.channel.send(`❌ Error playing song: ${error.message}. Skipping to next song...`);
+      await playNext(guildId, serverQueue.channel, client, player, queues, history);
+    } catch (err) {
+      console.error(`Failed to handle AudioPlayer error for guild ${guildId}: ${err.message}`);
+    }
+  }
+});
+
+player.on(AudioPlayerStatus.Idle, async () => {
+  const guildId = [...queues.keys()].find(gid => queues.get(gid).connection?.state?.subscription?.player === player);
+  if (!guildId) {
+    console.warn('No guild found for idle AudioPlayer');
+    return;
+  }
+
+  const serverQueue = queues.get(guidId);
+  if (!serverQueue) {
+    console.warn(`No server queue found for guild: ${guildId}`);
+    return;
+  }
+
+  if (serverQueue.loop && serverQueue.currentSong) {
+    console.log(`Loop enabled, replaying: ${serverQueue.currentSong.title}`);
+    serverQueue.songs.unshift({ ...serverQueue.currentSong, stream: await getStream(serverQueue.currentSong.url) });
+    await playNext(guildId, serverQueue.channel, client, player, queues, history);
+  } else if (serverQueue.songs.length > 0) {
+    console.log(`Queue has ${serverQueue.songs.length} songs, playing next`);
+    await playNext(guildId, serverQueue.channel, client, player, queues, history);
+  } else {
+    console.log(`Queue empty for guild ${guildId}, stopping playback`);
+    serverQueue.playing = false;
+    const embed = new EmbedBuilder()
+      .setTitle('Nexus Control Panel')
+      .setDescription('No song is currently playing.\nJoin a voice channel and queue songs by name or url using /play.')
+      .setColor(0x1db954)
+      .setImage('https://i.postimg.cc/y17C26Nd/Chat-GPT-Image-Jul-1-2025-10-41-35-PM.png')
+      .setTimestamp();
+    if (serverQueue.controllerMessage) {
+      try {
+        if (!serverQueue.controllerMessage.deleted && serverQueue.controllerMessage.deletable) {
+          await serverQueue.controllerMessage.delete();
+          serverQueue.controllerMessage = null; // Reset after deletion
+        }
+      } catch (err) {
+        console.error(`Failed to delete controller message for guild ${guildId}: ${err.message}`);
+      }
+    }
+    try {
+      serverQueue.controllerMessage = await serverQueue.channel.send({
+        embeds: [embed],
+        components: [client.disabledMusicControlsRow1, client.disabledMusicControlsRow2, client.disabledMusicControlsRow3],
+      });
+      setTimeout(async () => {
+        if (queues.has(guildId) && !queues.get(guildId).songs.length && !queues.get(guildId).playing) {
+          serverQueue.connection.destroy();
+          queues.delete(guildId);
+          await serverQueue.channel.send('👋 Nexus has left the voice channel.');
+        }
+      }, 5 * 60 * 1000); // 5 minutes
+    } catch (err) {
+      console.error(`Failed to send idle message for guild ${guildId}: ${err.message}`);
+    }
+  }
+});
 
 // Xbox API retry request
 async function retryRequest(url, options, retries = 3, backoff = 1000) {
@@ -106,7 +208,7 @@ async function retryRequest(url, options, retries = 3, backoff = 1000) {
       const cacheKey = `${url}:${JSON.stringify(options)}`;
       if (apiCache.has(cacheKey)) {
         const cached = apiCache.get(cacheKey);
-        if (Date.now() - cached.timestamp < 5 * 60 * 1000) return cached.data; // Cache valid for 5 minutes
+        if (Date.now() - cached.timestamp < 5 * 60 * 1000) return cached.data;
       }
       const response = await axios(url, options);
       apiCache.set(cacheKey, { data: response, timestamp: Date.now() });
@@ -114,8 +216,8 @@ async function retryRequest(url, options, retries = 3, backoff = 1000) {
     } catch (error) {
       if (error.response?.status === 429 && i < retries - 1) {
         console.warn(`Rate limit hit, retrying after ${backoff}ms`);
-        await new Promise(resolve => setTimeout(resolve, backoff));
-        backoff *= 2; // Exponential backoff
+        await new Promise((resolve) => setTimeout(resolve, backoff));
+        backoff *= 2;
         continue;
       }
       throw error;
@@ -132,10 +234,10 @@ async function executeCommand(interaction, callback) {
     }
     await callback(interaction);
   } catch (error) {
-    console.error(`Command ${interaction.commandName || interaction.customId} failed:`, error);
+    console.error(`Command ${interaction.commandName || interaction.customId} failed: ${error.message}`);
     if (interaction.isRepliable()) {
       const replyFn = interaction.deferred || interaction.replied ? interaction.editReply : interaction.reply;
-      await replyFn({ content: `❌ Error: ${error.message}`, flags: 64 }).catch(err => {
+      await replyFn({ content: `❌ Error: ${error.message}`, ephemeral: true }).catch((err) => {
         console.error('Failed to send error reply:', err.message);
       });
     } else {
@@ -144,136 +246,115 @@ async function executeCommand(interaction, callback) {
   }
 }
 
-// Music playback
-async function playNext(guildId, channel) {
-  console.log(`playNext called for guild: ${guildId}`);
-  const serverQueue = queues.get(guildId);
-  if (!serverQueue) {
-    console.warn('⚠️ No server queue found for guild:', guildId);
-    return channel.send('❌ No queue found.');
-  }
-  if (!serverQueue.connection?.state?.status) {
-    console.warn('⚠️ Voice connection is invalid or destroyed');
-    queues.delete(guildId);
-    return channel.send('❌ Lost voice connection. Please use /join to reconnect.');
-  }
-  const song = serverQueue.songs.shift();
-  if (!song) {
-    serverQueue.playing = false;
-    client.user.setActivity('Idle', { type: ActivityType.Playing });
-    const message = await channel.send('🤖 Queue is empty! Add another banger if you want to hear more.');
-    setTimeout(() => {
-      if (queues.has(guildId) && !queues.get(guildId).songs.length && !queues.get(guildId).playing) {
-        serverQueue.connection.destroy();
-        queues.delete(guildId);
-        message.edit('👋 Nexus has left the voice channel.');
-      }
-    }, 20000);
-    return;
-  }
-  if (serverQueue.currentSong) {
-    if (!history.has(guildId)) history.set(guildId, []);
-    history.get(guildId).unshift(serverQueue.currentSong);
-    if (history.get(guildId).length > 50) history.get(guildId).pop(); // Limit history to 50 songs
-  }
-  serverQueue.lastPlayed = serverQueue.currentSong || null;
-  serverQueue.currentSong = song;
-  if (serverQueue.loop) serverQueue.songs.push(song);
-  try {
-    const resource = createAudioResource(song.stream, {
-      inputType: StreamType.Arbitrary,
-      inlineVolume: true,
-    });
-    resource.volume.setVolume(serverQueue.volume);
-    console.log(`Playing song: ${song.title}`);
-    player.play(resource);
-    serverQueue.connection.subscribe(player);
-    serverQueue.playing = true;
-    serverQueue.skipVotes.clear();
-    client.user.setActivity(song.title, { type: ActivityType.Streaming, url: song.url });
-    const duration = song.duration ? `${Math.floor(song.duration / 60)}:${(song.duration % 60).toString().padStart(2, '0')}` : 'Unknown';
-    const embed = new EmbedBuilder()
-      .setTitle('🎶 Now Playing')
-      .setDescription(`**${song.title}**\nRequested by: ${song.requestedBy}\nDuration: ${duration}`)
-      .addFields(serverQueue.lastPlayed ? [{ name: 'Last Played', value: serverQueue.lastPlayed.title, inline: true }] : [])
-      .setColor(0x1db954)
-      .setImage(song.source === 'youtube' ? `https://img.youtube.com/vi/${extractYouTubeID(song.url)}/hqdefault.jpg` : null)
-      .setTimestamp();
-    if (serverQueue.controllerMessage && !serverQueue.controllerMessage.deleted) {
-      await serverQueue.controllerMessage.delete().catch(() => {});
-    }
-    serverQueue.controllerMessage = await channel.send({
-      embeds: [embed],
-      components: [musicControlsRow1, musicControlsRow2, musicControlsRow3],
-    });
-    const collector = serverQueue.controllerMessage.createMessageComponentCollector({ time: 5 * 60 * 1000 });
-    collector.on('collect', async (i) => executeCommand(i, handleMusicButtonInteraction));
-    player.once(AudioPlayerStatus.Idle, async () => {
-      try {
-        if (!serverQueue.loop) {
-          serverQueue.playing = false;
-          if (serverQueue.controllerMessage && !serverQueue.controllerMessage.deleted) {
-            await serverQueue.controllerMessage.delete().catch(() => {});
-          }
-          serverQueue.controllerMessage = null;
-          await playNext(guildId, channel);
-        }
-      } catch (err) {
-        console.error('❌ Error in AudioPlayer Idle event:', err.message);
-        channel.send('❌ Something went wrong while playing the next song. Skipping...');
-        await playNext(guildId, channel);
-      }
-    });
-    player.on('error', (error) => {
-      console.error('AudioPlayer error:', error.message);
-      channel.send(`❌ Error: ${error.message}`);
-      playNext(guildId, channel);
-    });
-  } catch (err) {
-    console.error('playNext error:', err.message);
-    channel.send('❌ Error playing song. Skipping...');
-    await playNext(guildId, channel);
-  }
-}
-
 // Button interaction handler
 async function handleMusicButtonInteraction(interaction) {
+  const interactionId = interaction.token;
+  if (handledInteractions.has(interactionId)) {
+    console.warn(`Duplicate interaction detected: ${interactionId}, skipping`);
+    return;
+  }
+  handledInteractions.add(interactionId);
+
   try {
-    await interaction.deferReply({ ephemeral: true }); // Defer immediately to extend response window
+    console.time(`handleMusicButtonInteraction_${interactionId}`);
+    console.log(`Handling button interaction: ${interaction.customId} for guild ${interaction.guildId}`);
+
+    await interaction.deferReply({ ephemeral: true });
+
     const guildId = interaction.guildId;
     const serverQueue = queues.get(guildId);
     if (!serverQueue) {
-      return interaction.editReply({ content: '❌ No music is currently playing.' });
+      console.warn(`No music queue found for guild: ${guildId}`);
+      await interaction.editReply({ content: '❌ No music is currently playing.', ephemeral: true });
+      return;
     }
     if (!interaction.member.voice.channel) {
-      return interaction.editReply({ content: '❌ You must be in a voice channel to interact with the player.' });
+      await interaction.editReply({ content: '❌ You must be in a voice channel to interact with the player.', ephemeral: true });
+      return;
     }
-    if (interaction.customId !== 'vote_skip' && interaction.user.id !== serverQueue.currentSong?.requestedBy && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
-      return interaction.editReply({ content: '❌ You cannot control this song.' });
+    if (interaction.customId !== 'vote_skip' && interaction.customId !== 'grab' && interaction.user.id !== serverQueue.currentSong?.requestedBy && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+      await interaction.editReply({ content: '❌ You cannot control this song.', ephemeral: true });
+      return;
     }
-    if (interaction.customId === 'pause') {
+
+    if (interaction.customId === 'grab') {
+      if (!serverQueue.currentSong) {
+        await interaction.editReply({ content: '❌ No song is currently playing.', ephemeral: true });
+        return;
+      }
+      const song = serverQueue.currentSong;
+      const duration = song.duration ? `${Math.floor(song.duration / 60)}:${(song.duration % 60).toString().padStart(2, '0')}` : 'Unknown';
+      const embed = new EmbedBuilder()
+        .setTitle('📋 Grabbed Song')
+        .setDescription(`**${song.title}**`)
+        .addFields(
+          { name: 'Artist', value: song.artist || 'Unknown Artist', inline: true },
+          { name: 'Duration', value: duration, inline: true },
+          { name: 'URL', value: `[Link](${song.url})`, inline: true },
+          { name: 'Requested by', value: song.requestedBy || 'Unknown', inline: true }
+        )
+        .setColor(0x1db954)
+        .setImage(song.source === 'youtube' ? `https://img.youtube.com/vi/${extractYouTubeID(song.url)}/hqdefault.jpg` : null)
+        .setTimestamp();
+      try {
+        await interaction.user.send({ embeds: [embed] });
+        await interaction.editReply({ content: '📋 Song details sent to your DMs!', ephemeral: true });
+      } catch (dmError) {
+        console.warn(`Failed to send DM to ${interaction.user.id}:`, dmError.message);
+        await interaction.editReply({
+          content: '⚠️ Could not send DM (please enable DMs from server members). Displaying song details here instead:',
+          embeds: [embed],
+          ephemeral: true
+        });
+      }
+    } else if (interaction.customId === 'mute') {
+      if (!serverQueue.isMuted) {
+        serverQueue.previousVolume = serverQueue.volume;
+        serverQueue.volume = 0;
+        serverQueue.isMuted = true;
+        player.state.resource?.volume?.setVolume(serverQueue.volume);
+        await interaction.editReply({ content: `🔇 Volume muted (0%)`, ephemeral: true });
+      } else {
+        serverQueue.volume = serverQueue.previousVolume || 1.0;
+        serverQueue.isMuted = false;
+        player.state.resource?.volume?.setVolume(serverQueue.volume);
+        await interaction.editReply({ content: `🔊 Volume unmuted to ${Math.round(serverQueue.volume * 100)}%`, ephemeral: true });
+      }
+    } else if (interaction.customId === 'pause') {
       if (player.state.status === AudioPlayerStatus.Playing) {
         player.pause();
-        await interaction.editReply({ content: '⏸ Paused' });
+        await interaction.editReply({ content: '⏸ Paused', ephemeral: true });
       } else {
         player.unpause();
-        await interaction.editReply({ content: '▶️ Resumed' });
+        await interaction.editReply({ content: '▶️ Resumed', ephemeral: true });
       }
     } else if (interaction.customId === 'skip') {
       serverQueue.skipVotes.clear();
       player.stop();
-      await interaction.editReply({ content: '⏭ Skipped' });
+      await interaction.editReply({ content: '⏭ Skipped the current song.', ephemeral: true });
+    } else if (interaction.customId === 'previous') {
+      const guildHistory = history.get(guildId) || [];
+      if (!guildHistory.length) {
+        await interaction.editReply({ content: '❌ No previous songs in history.', ephemeral: true });
+        return;
+      }
+      const previousSong = guildHistory[0];
+      serverQueue.songs.unshift({ ...previousSong, stream: await getStream(previousSong.url) });
+      player.stop();
+      await interaction.editReply({ content: `⏮ Replaying previous song: **${previousSong.title}**`, ephemeral: true });
     } else if (interaction.customId === 'vote_skip') {
       const voiceChannel = interaction.member.voice.channel;
-      const memberCount = voiceChannel.members.filter(m => !m.user.bot).size;
+      const memberCount = voiceChannel.members.filter((m) => !m.user.bot).size;
       const requiredVotes = Math.ceil(memberCount / 2);
       if (serverQueue.skipVotes.has(interaction.user.id)) {
-        return interaction.editReply({ content: '❌ You already voted to skip.' });
+        await interaction.editReply({ content: '❌ You already voted to skip.', ephemeral: true });
+        return;
       }
       serverQueue.skipVotes.add(interaction.user.id);
       const currentVotes = serverQueue.skipVotes.size;
       await interaction.editReply({
         content: `🗳️ ${interaction.user.username} voted to skip! (${currentVotes}/${requiredVotes})`,
+        ephemeral: true
       });
       if (serverQueue.currentSong && currentVotes >= requiredVotes) {
         serverQueue.skipVotes.clear();
@@ -282,22 +363,26 @@ async function handleMusicButtonInteraction(interaction) {
       }
     } else if (interaction.customId === 'vol_up') {
       serverQueue.volume = Math.min(serverQueue.volume + 0.25, 2.0);
+      serverQueue.isMuted = false;
       player.state.resource?.volume?.setVolume(serverQueue.volume);
-      await interaction.editReply({ content: `🔊 Volume increased to ${Math.round(serverQueue.volume * 100)}%` });
+      await interaction.editReply({ content: `🔊 Volume increased to ${Math.round(serverQueue.volume * 100)}%`, ephemeral: true });
     } else if (interaction.customId === 'vol_down') {
       serverQueue.volume = Math.max(serverQueue.volume - 0.25, 0.1);
+      serverQueue.isMuted = false;
       player.state.resource?.volume?.setVolume(serverQueue.volume);
-      await interaction.editReply({ content: `🔉 Volume decreased to ${Math.round(serverQueue.volume * 100)}%` });
+      await interaction.editReply({ content: `🔉 Volume decreased to ${Math.round(serverQueue.volume * 100)}%`, ephemeral: true });
     } else if (interaction.customId === 'stop') {
       serverQueue.connection.destroy();
       queues.delete(guildId);
       player.stop();
-      client.user.setActivity('Idle', { type: ActivityType.Playing });
-      await interaction.editReply({ content: '🛑 Stopped.' });
+      const randomActivity = funnyActivities[Math.floor(Math.random() * funnyActivities.length)];
+      client.user.setActivity(randomActivity, { type: ActivityType.Custom });
+      await interaction.editReply({ content: '🛑 Stopped.', ephemeral: true });
     } else if (interaction.customId === 'queue') {
       const q = serverQueue.songs;
       if (!q.length) {
-        return interaction.editReply({ content: '🤖 Queue is empty! Add another banger if you want to hear more.' });
+        await interaction.editReply({ content: '🤖 Queue is empty! Add another banger if you want to hear more.', ephemeral: true });
+        return;
       }
       const selectMenu = new StringSelectMenuBuilder()
         .setCustomId('select_song')
@@ -308,75 +393,186 @@ async function handleMusicButtonInteraction(interaction) {
           value: String(idx),
         })));
       const row = new ActionRowBuilder().addComponents(selectMenu);
-      await interaction.editReply({ content: '📃 **Select a song from the queue:**', components: [row] });
+      await interaction.editReply({ content: '📃 **Select a song from the queue:**', components: [row], ephemeral: true });
     } else if (interaction.customId === 'loop') {
       serverQueue.loop = !serverQueue.loop;
-      await interaction.editReply({ content: serverQueue.loop ? '🔁 Loop mode **enabled**' : '⏹️ Loop mode **disabled**' });
+      console.log(`Loop state changed to: ${serverQueue.loop}`);
+      const replyContent = serverQueue.loop ? '🔁 Loop mode **enabled**' : '⏹️ Loop mode **disabled**';
+      await interaction.editReply({ content: replyContent, ephemeral: true });
     } else if (interaction.customId === 'shuffle') {
       if (serverQueue.songs.length < 2) {
-        return interaction.editReply({ content: '❌ Not enough songs to shuffle.' });
+        await interaction.editReply({ content: '❌ Not enough songs to shuffle.', ephemeral: true });
+        return;
       }
       serverQueue.songs = serverQueue.songs.sort(() => Math.random() - 0.5);
-      await interaction.editReply({ content: '🔀 Queue shuffled!' });
+      await interaction.editReply({ content: '🔀 Queue shuffled!', ephemeral: true });
     } else if (interaction.customId === 'clear_queue') {
       serverQueue.songs = [];
-      await interaction.editReply({ content: '🧹 Queue cleared!' });
+      const randomActivity = funnyActivities[Math.floor(Math.random() * funnyActivities.length)];
+      client.user.setActivity(randomActivity, { type: ActivityType.Custom });
+      await interaction.editReply({ content: '🧹 Queue cleared!', ephemeral: true });
     } else if (interaction.customId === 'replay') {
       const guildHistory = history.get(guildId) || [];
       if (!guildHistory.length) {
-        return interaction.editReply({ content: '❌ No songs in history.' });
+        await interaction.editReply({ content: '❌ No songs in history.', ephemeral: true });
+        return;
       }
-      const index = parseInt(interaction.message.components[0].components[0].options.find(o => o.default)?.value || '0', 10);
+      const index = parseInt(interaction.message.components[0].components[0].options?.find((o) => o.default)?.value || '0', 10);
       const song = guildHistory[index];
-      serverQueue.songs.unshift(song);
+      if (!song) {
+        await interaction.editReply({ content: '❌ Invalid history song.', ephemeral: true });
+        return;
+      }
+      serverQueue.songs.unshift({ ...song, stream: await getStream(song.url) });
       player.stop();
-      await interaction.editReply({ content: `🎶 Replaying: **${song.title}**` });
+      await interaction.editReply({ content: `🎶 Replaying: **${song.title}**`, ephemeral: true });
     }
   } catch (error) {
-    console.error('Error in handleMusicButtonInteraction:', error);
-    if (interaction.deferred || interaction.replied) {
-      await interaction.editReply({ content: `❌ Error: ${error.message}` }).catch(() => {});
-    } else if (interaction.isRepliable()) {
-      await interaction.reply({ content: `❌ Error: ${error.message}`, ephemeral: true }).catch(() => {});
-    }
+    console.error(`Error in handleMusicButtonInteraction (${interaction.customId}, ${interactionId}): ${error.message}`);
+    await interaction.editReply({ content: `❌ Error: ${error.message}`, ephemeral: true });
+  } finally {
+    handledInteractions.delete(interactionId);
   }
 }
 
 // Command handler
 const commands = new Map();
-const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
 for (const file of commandFiles) {
   try {
     const command = require(`./commands/${file}`);
     commands.set(command.data.name, command);
     console.log(`✅ Loaded command: ${command.data.name} from ${file}`);
   } catch (error) {
-    console.error(`❌ Failed to load command ${file}:`, error.message);
+    console.error(`❌ Failed to load command ${file}: ${error.message}`);
   }
 }
 
 // Client events
 client.once('ready', async () => {
   console.log(`✅ Bot is online as ${client.user.tag}`);
-  client.user.setActivity('Idle', { type: ActivityType.Playing });
+  const randomActivity = funnyActivities[Math.floor(Math.random() * funnyActivities.length)];
+  client.user.setActivity(randomActivity, { type: ActivityType.Custom });
+
+  setInterval(() => {
+    if (!queues.size || !Object.values(queues).some(q => q.playing)) {
+      const randomActivity = funnyActivities[Math.floor(Math.random() * funnyActivities.length)];
+      client.user.setActivity(randomActivity, { type: ActivityType.Custom });
+    }
+  }, 5 * 60 * 1000);
+
   const guild = client.guilds.cache.get(process.env.GUILD_ID);
   if (!guild) {
     console.warn('❌ Could not find guild:', process.env.GUILD_ID);
-  } else {
+    return;
+  }
+  try {
+    await guild.edit({ systemChannelId: process.env.WELCOME_CHANNEL_ID });
+    console.log('✅ System channel set to', process.env.WELCOME_CHANNEL_ID);
+  } catch (err) {
+    console.error('❌ Failed to set system channel:', err.message);
+  }
+
+  // Silo codes message updates
+  let messageToUpdate = null;
+  if (fs.existsSync('./silo-message.json')) {
     try {
-      await guild.edit({ systemChannelId: process.env.WELCOME_CHANNEL_ID });
-      console.log('✅ System channel set to', process.env.WELCOME_CHANNEL_ID);
+      const data = JSON.parse(fs.readFileSync('./silo-message.json', 'utf-8'));
+      const { channelId, messageId } = data || {};
+      if (!channelId || !messageId || isNaN(channelId) || isNaN(messageId)) {
+        console.warn('Invalid or missing channelId/messageId in silo-message.json, cleaning up');
+        fs.unlinkSync('./silo-message.json');
+      } else {
+        const channel = await client.channels.fetch(channelId).catch((err) => {
+          console.error('Failed to fetch channel:', err.message);
+          return null;
+        });
+        if (channel) {
+          messageToUpdate = await channel.messages.fetch(messageId).catch((err) => {
+            console.error('Failed to fetch message:', err.message);
+            return null;
+          });
+        }
+        if (!messageToUpdate || !messageToUpdate.editable) {
+          console.warn('Silo codes message not found or not editable, cleaning up');
+          fs.unlinkSync('./silo-message.json');
+          messageToUpdate = null;
+        }
+      }
     } catch (err) {
-      console.error('❌ Failed to set system channel:', err.message);
+      console.error('Error parsing silo-message.json:', err.message);
+      fs.unlinkSync('./silo-message.json');
     }
   }
+
+  const sendOrUpdateEmbed = async () => {
+    let codes;
+    try {
+      codes = JSON.parse(fs.readFileSync('./codes.json', 'utf-8'));
+    } catch (err) {
+      throw new Error('Invalid codes.json format');
+    }
+    if (!Array.isArray(codes) || codes.length === 0) throw new Error('No codes found');
+
+    const now = new Date();
+    const expiryDate = new Date(Date.UTC(2025, 6, 7, 0, 0, 0));
+    const remaining = expiryDate.getTime() - now.getTime();
+    const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+    const countdown = `${days}d ${hours}h ${minutes}m`;
+    const expiryUnix = Math.floor(expiryDate.getTime() / 1000);
+    const msg = codes.map(c => `\`\`\`🟢 ${c.description} — ${c.code}\`\`\``).join('\n');
+
+    return new EmbedBuilder()
+      .setTitle('📡 NEXUS Silo Broadcast: Result Found!')
+      .setDescription(msg)
+      .addFields({ name: 'Codes Expire In', value: `${countdown} (Expires <t:${expiryUnix}:F>)`, inline: false })
+      .setColor(0xf5d142)
+      .setImage('https://i.postimg.cc/1XzJj2Vw/Chat-GPT-Image-Jul-1-2025-06-14-52-AM.png')
+      .setFooter({ text: 'Thanks to NukaCrypt & Nexus AI 🤖' })
+      .setTimestamp();
+  };
+
+  const updateSiloMessage = async () => {
+    try {
+      if (!messageToUpdate || !messageToUpdate.editable) {
+        if (fs.existsSync('./silo-message.json')) {
+          fs.unlinkSync('./silo-message.json');
+        }
+        const channel = client.channels.cache.get(process.env.WELCOME_CHANNEL_ID) || (await client.channels.fetch(process.env.WELCOME_CHANNEL_ID).catch(() => null));
+        if (channel && channel.isTextBased()) {
+          messageToUpdate = await channel.send({ embeds: [await sendOrUpdateEmbed()] });
+          fs.writeFileSync('./silo-message.json', JSON.stringify({
+            channelId: messageToUpdate.channel.id,
+            messageId: messageToUpdate.id
+          }, null, 2));
+        } else {
+          console.error('No valid channel found for initial message');
+          return;
+        }
+      } else {
+        await messageToUpdate.edit({ embeds: [await sendOrUpdateEmbed()] });
+      }
+    } catch (err) {
+      console.error('Error updating silo codes message:', err.message);
+      if (messageToUpdate && fs.existsSync('./silo-message.json')) {
+        fs.unlinkSync('./silo-message.json');
+      }
+      messageToUpdate = null;
+    }
+  };
+
+  await updateSiloMessage();
+  setInterval(updateSiloMessage, 60 * 1000);
 });
 
 client.on('guildMemberAdd', (member) => {
   console.log(`🟢 guildMemberAdd fired for ${member.user.tag}`);
   const ch = member.guild.channels.cache.get(process.env.WELCOME_CHANNEL_ID);
   if (!ch || !ch.isTextBased()) {
-    return console.warn('❌ Welcome channel invalid:', process.env.WELCOME_CHANNEL_ID);
+    console.warn('❌ Welcome channel invalid:', process.env.WELCOME_CHANNEL_ID);
+    return;
   }
   const embed = new EmbedBuilder()
     .setTitle('👋 Welcome to Deadside of Fallout!')
@@ -384,7 +580,7 @@ client.on('guildMemberAdd', (member) => {
     .setColor(0x00AE86)
     .setThumbnail(member.user.displayAvatarURL({ size: 256 }))
     .setTimestamp();
-  ch.send({ embeds: [embed] }).catch(err => console.error('❌ Failed to send welcome embed:', err.message));
+  ch.send({ embeds: [embed] }).catch((err) => console.error('❌ Failed to send welcome embed:', err.message));
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -422,11 +618,10 @@ client.on('interactionCreate', async (interaction) => {
     });
   } else if (interaction.isButton()) {
     await executeCommand(interaction, async () => {
-      if (interaction.customId === 'yes' || interaction.customId === 'no' || interaction.customId === 'replay') {
-        // Handled by respective collectors
-      } else {
-        await handleMusicButtonInteraction(interaction);
+      if (['yes', 'no', 'replay'].includes(interaction.customId)) {
+        return;
       }
+      await handleMusicButtonInteraction(interaction);
     });
   } else if (interaction.isStringSelectMenu()) {
     await executeCommand(interaction, async () => {
@@ -437,10 +632,22 @@ client.on('interactionCreate', async (interaction) => {
         const index = parseInt(interaction.values[0], 10);
         if (isNaN(index) || !serverQueue.songs[index]) throw new Error('Invalid song selection');
         const [selectedSong] = serverQueue.songs.splice(index, 1);
-        serverQueue.songs.unshift(selectedSong);
+        serverQueue.songs.unshift({ ...selectedSong, stream: await getStream(selectedSong.url) });
         serverQueue.skipVotes.clear();
         player.stop();
-        await interaction.reply({ content: `🎶 Now playing: **${selectedSong.title}**`, flags: 64 });
+        await interaction.reply({ content: `🎶 Now playing: **${selectedSong.title}**`, ephemeral: true });
+      } else if (interaction.customId === 'select_tadpole_category') {
+        const command = commands.get('tadpole');
+        if (!command || !command.handleInteraction) {
+          throw new Error('Tadpole command or select menu handler not found');
+        }
+        await command.handleInteraction(interaction);
+      } else if (interaction.customId === 'select_possum_category') {
+        const command = commands.get('possum');
+        if (!command || !command.handleInteraction) {
+          throw new Error('Possum command or select menu handler not found');
+        }
+        await command.handleInteraction(interaction);
       }
     });
   }
@@ -448,7 +655,7 @@ client.on('interactionCreate', async (interaction) => {
 
 // Handle Xbox API errors globally
 axios.interceptors.response.use(
-  response => response,
+  (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
       throw new Error('Invalid OpenXBL API key. Please contact the bot admin.');
@@ -457,4 +664,4 @@ axios.interceptors.response.use(
   },
 );
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN).catch((err) => console.error('❌ Failed to login:', err.message));
